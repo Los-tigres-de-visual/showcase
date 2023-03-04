@@ -4,8 +4,8 @@
     var options = $.extend({
       default_offset_pct: 0.5,
       orientation: 'horizontal',
-      before_label: 'Antes',
-      after_label: 'Después',
+      before_label: 'Original',
+      after_label: 'Filtro',
       no_overlay: false,
       move_slider_on_hover: false,
       move_with_handle_only: true,
