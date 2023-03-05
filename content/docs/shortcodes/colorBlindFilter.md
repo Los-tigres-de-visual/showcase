@@ -7,14 +7,14 @@
 <script src="/showcase/sketches/colorBlindFilter/script.js"></script>
 <script>
     function mostrar(id){
-        document.getElementById(id).style.visibility = "visible";
+        document.getElementById(id).style.display = "block";
     }
     function ocultar(id){
-        document.getElementById(id).style.visibility = "hidden";
+        document.getElementById(id).style.display = "none";
     }
     function mostrar_deuteranopia(){
         let elemento = document.getElementById("deuteranopiaDiv");
-        if(elemento.style.visibility === "hidden"){
+        if(elemento.style.display === "none"){
             mostrar("deuteranopiaDiv");
         } else {
             ocultar("deuteranopiaDiv");
@@ -22,7 +22,7 @@
     }
     function mostrar_protanopia(){
         let elemento = document.getElementById("protanopiaDiv");
-        if(elemento.style.visibility === "hidden"){
+        if(elemento.style.display === "none"){
             mostrar("protanopiaDiv");
         } else {
             ocultar("protanopiaDiv");
@@ -30,7 +30,7 @@
     }
     function mostrar_tritanopia(){
         let elemento = document.getElementById("tritanopiaDiv");
-        if(elemento.style.visibility === "hidden"){
+        if(elemento.style.display === "none"){
             mostrar("tritanopiaDiv");
         } else {
             ocultar("tritanopiaDiv");
@@ -129,7 +129,7 @@ Para ver la implementación de cada uno de estos filtros en `p5` da clic en uno 
     <button onclick="mostrar_tritanopia()" id="tritanopiaButton">Tritanopía</button>
 </div>
 
-<div id="deuteranopiaDiv" style="visibility:hidden">
+<div id="deuteranopiaDiv">
     {{< highlight js >}}
     let img;
 
@@ -182,7 +182,7 @@ Para ver la implementación de cada uno de estos filtros en `p5` da clic en uno 
     </div>
 </div>
 
-<div id="protanopiaDiv" style="visibility:hidden">
+<div id="protanopiaDiv">
 {{< highlight js >}}
     let img;
 
@@ -234,7 +234,7 @@ Para ver la implementación de cada uno de estos filtros en `p5` da clic en uno 
     </div>
 </div>
 
-<div id="tritanopiaDiv" style="visibility:hidden">
+<div id="tritanopiaDiv">
 {{< highlight js >}}
     let img;
 
