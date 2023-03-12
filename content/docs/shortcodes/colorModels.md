@@ -8,12 +8,12 @@ Es quizá el modelo de color más conocido y se usa especialmente para represent
 
 El modelo rgb se suele representar por medio de un cubo construido a partir de un plano de tres dimensiones en el que cada eje corresponde a la intensidad de uno de los tres colores primarios. En este caso la tupla del color es las tres coordenadas en el plano que señalan un punto específico en el cubo donde se encuentra el color en cuestión.
 
-![rgb cube](/showcases/ketches/colorModels/rgb.jpg)
+![rgb cube](/showcases/sketches/colorModels/rgb.jpg)
 
 ## HSL
 Se trata de un modelo usado principalmente en diseño gráfico y en edición de imagen. Surgió bajo la idea de representar el color separándolo en componentes que los humanos más fácilmente asocian como atributos del color. La tupla entonces tiene tres valores: matiz, saturación y luminosidad  o en inglés Hue, Saturation, Lightness (HSL). El matiz se refiere al color puro o tono que nos permite a simple vista diferenciar un color de otro. Si miramos el círculo cromático decimos que el matiz corresponde al punto del círculo en el que estamos; es por esto que su valor usualmente corresponde a los grados de un arco en un círculo ( es decir que toma valores entre 0° y 360°). Tradicionalmente 0° corresponde al rojo puro, 120° corresponde al verde puro y 240° al azul puro (desde ya podemos ver algunas ideas que relacionan al rgb con el hsl)
 
-![color wheel](/showcases/ketches/colorModels/colorwheel.webp)
+![color wheel](/showcases/sketches/colorModels/colorwheel.webp)
 
 La saturación representa la intensidad o pureza del color. También se refiere como la cantidad de gris en el color y se describe usualmente como un porcentaje, siendo 0% gris y 100% el color puro. Este componente se asocia con qué tan vibrante o vívido es el color.
 
@@ -21,7 +21,7 @@ Finalmente tenemos la luminosidad, que a veces es más fácil de entender como b
 
 El modelo HSL se suele representar como un cilindro, en el que la altura es la luminosidad, la distancia desde el eje al perímetro es la saturación y el matiz los grados alrededor del cilindro: 
 
-![hsl cilinder](/showcases/ketches/colorModels/hsl.PNG)
+![hsl cilinder](/showcases/sketches/colorModels/hsl.PNG)
 
 ## HSB
 
@@ -29,7 +29,7 @@ HSB (Hue, Saturation, Brigthness) o mejor conocido como HSV (Hue, Saturation, Va
 
 Por lo anterior, la representación del HSB es también un cilindro, pero con la parte superior representando los colores vistos a completa luz y no el blanco como en HSL: 
 
-![hsb cilinder](/showcases/ketches/colorModels/hsv.PNG)
+![hsb cilinder](/showcases/sketches/colorModels/hsv.PNG)
 
 ## Conversión
 
@@ -37,7 +37,7 @@ A pesar de que estos modelos sean diferentes y a veces no fácilmente comparable
 
 Es entendible que el paso entre HSL y HSB sea corto (aunque no necesariamente intuitivo), pero la transformación de RGB a HSL o HSB quizá no es fácil de visualizar. Utilizando las representaciones que ya vimos de dichos modelos, el cubo y los cilindros, es más fácil seguir dicha transformación.
 
-![transformation](/showcases/ketches/colorModels/Hsl-and-hsv.svg)
+![transformation](/showcases/sketches/colorModels/Hsl-and-hsv.svg)
 
 En la imagen podemos ver que en las esquinas del cubo de RGB se ubican los colores puros y mediante la transformación estos colores se unifican en un plano. En HSL el negro deciende mientras que el blanco sube situandose y expandiéndose en las bases del cilindro, dejado los colores puros en la sección media del cilindro. Por otro lado, en HSV los colores puros se mantienen al nivel del blanco y todos se mantienen en la parte superior del cilindro, con el blanco en el centro, y dejando el negro en la base inferior.
 
@@ -51,4 +51,4 @@ En teoría del color se habla de conjuntos de colores que trabajan bien juntos y
 
 Estas combinaciones de colores son muy utilizadas en diseño y se tiende a usarlas para generar gusto y equilibrio en las piezas visuales.
 
-![color combination](/showcases/ketches/colorModels/transformation.png)
+![color combination](/showcases/sketches/colorModels/transformation.png)
