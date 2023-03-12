@@ -52,3 +52,57 @@ En teoría del color se habla de conjuntos de colores que trabajan bien juntos y
 Estas combinaciones de colores son muy utilizadas en diseño y se tiende a usarlas para generar gusto y equilibrio en las piezas visuales.
 
 ![color combination](/showcases/sketches/colorModels/transformation.png)
+
+
+
+En el siguiente ejercicio representamos los conceptos e ideas anteriormente de forma que partimos de un color *principal* en el modelo **rgb** que puede ser construido modificando sus tres componentes (r, g ,b) por medio de deslizadores. El color se actualiza en tiempo real. En cualquier momento podemos seleccionar una de las opciones en la parte superior para cambiar el modelo de color, lo que ocasionará que a partir de los valores del modelo actual se realicen cálculos matemáticos para encontrar los valores de los componentes del nuevo modelo que producen el mismo color. El cambio se refleja en los deslizadores, que ahora describirán los componentes del nuevo modelo y que tomarán los valores que corresponden al color seleccionado.
+El programa permite cambiar entre RGB, HSL y HSB en cualquier orden para explorar las equivalencias entre ellos.
+
+{{< hint warning >}}
+notese que al cambiar de modelo, el color principal no cambia, pues se calcula exactamente el mismo color en el nuevo modelo
+{{< /hint >}}
+Estando en un modelo diferente también se puede interactuar con los deslizadores para cambiar el color y explorar cómo funcionan los componentes de dicho modelo.
+
+{{< hint warning >}}
+use esta opción para evidenciar las diferencias entre los modelos, en especial entre HSL y HSB
+{{< /hint >}}
+
+////Aquí se muestran algunos de los procesos matemáticos utilizados para calcular las equivalencias entre modelos.
+
+Como se puede observar, el programa además muestra el color complementario, la triada y los análogos del color principal todo el tiempo, y estos también se calculan y actualizan en tiempo real a medida que jugamos con el color principal.
+
+### complementario
+
+Dentro de la investigación se encontraron dos formas de calcular el color complementario por un lado en rgb y por otro en HSL/HSB.
+
+El primero corresponde a restar de 255 (blanco) el valor de cada componente del color principal para hallar los valores del complemento. La teoría es que para que dos colores sean complementarios, la suma de ambos debe ser el color blanco.
+
+//código 
+
+La segunda forma consiste en desplazarnos 180° en el círculo cromático para encontrar el color físicamente opuesto al principal, por lo que en HSL/HSB basta con sumar 180° al valor del matiz.
+
+//código
+
+{{< hint warning >}}
+En este programa se usaron ambas técnicas, por lo que en cada modelo se utiliza el método correspondiente. Nótese que estos no son 100% equivalentes pues al cambiar entre rgb y cualquiera de los otros dos modelos podemos ver cambios en el color complementario, siendo la diferencia más o menos drástica dependiendo del color.
+{{< /hint >}}
+
+### análogos
+
+Para el cálculo de análogos nos basamos en el círculo cromático y nos desplazamos 30° a lado y lado del color principal para hallarlos. En HSL/HSB esto se hace sobre el valor del matiz.
+
+//código
+
+{{< hint warning >}}
+nótese la similitud de los análogos y el color principal por su cercanía en el circulo cromático
+{{< /hint >}}
+
+### triada de color
+
+Finalmente encontramos la triada de color seleccionando los dos colores que sean equidistantes entre sí y con el color principal sobre el círculo cromático. Puesto que el círculo tiene 360°, basta con aumentar el matiz en pasos de 120° para hallarlos.
+
+//código
+
+{{< hint warning >}}
+nótese las diferencias más drásticas entre la triada y los análogos.
+{{< /hint >}}
