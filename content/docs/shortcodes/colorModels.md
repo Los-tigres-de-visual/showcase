@@ -67,7 +67,123 @@ Estando en un modelo diferente también se puede interactuar con los deslizadore
 use esta opción para evidenciar las diferencias entre los modelos, en especial entre HSL y HSB
 {{< /hint >}}
 
-////Aquí se muestran algunos de los procesos matemáticos utilizados para calcular las equivalencias entre modelos.
+Aquí se muestran algunos de los procesos matemáticos utilizados para calcular las equivalencias entre modelos:
+
+### RGB a HSL
+{{< highlight js >}}
+function rgbToHSL(rgba){
+  let min=1
+  let max=0
+  
+  //cálculo min max
+  for (var c=0;c<rgba.length;c++){
+    if (rgba[c] > max){
+      max=rgba[c]
+    }
+    if (rgba[c] < min){
+      min=rgba[c]
+    }
+  }
+  
+  //h
+  if (min==max){
+    h=0
+  }
+  else if(max==rgba[0]){
+    h=60*(((((rgba[1]-rgba[2])/(max-min))%6)+6)%6)}
+  else if(max==rgba[1]){
+    h=60*(((rgba[2]-rgba[0])/(max-min))+2)}
+  else if(max==rgba[2]){
+    h=60*(((rgba[0]-rgba[1])/(max-min))+4)}
+
+  //l
+  l=(max+min)/2
+  
+  //s
+  if (min==max){
+    s=0
+  }
+  else if (l<=1/2){
+    s=(max-min)/(2*l)
+  }
+  else if (l>1/2){
+    s=(max-min)/(2-2*l)
+  }
+
+  //redondeo 
+  let hsl=[Math.round(h * 100) / 100,Math.round(s * 100) / 100,Math.round(l * 100) / 100]
+  return hsl
+}
+{{< /highlight >}}
+
+### HSL a HSB
+{{< highlight js >}}
+function HSLToHSB(hslarray){
+  //h
+  H=hslarray[0]
+  
+  //b
+  B=hslarray[2]+hslarray[1]*Math.min(hslarray[2],1-hslarray[2])
+  
+  //s
+  if (B==0){
+    S=0
+  } else{
+    S=2*(1-hslarray[2]/B)
+  }
+  
+  //redondeo
+  let hsb=[Math.round(H * 100) / 100,Math.round(S * 100) / 100,Math.round(B * 100) / 100]
+  return hsb
+}
+{{< /highlight >}}
+
+### HSB to RGB
+{{< highlight js >}}
+function HSBTorgb(hsbarray){
+  
+  //variables intermedias
+  let C=hsbarray[1]*hsbarray[2]
+  let X=C*(1-Math.abs(((((hsbarray[0]/60)%2)+2)%2)-1))
+  let m=hsbarray[2]-C
+  
+  let r_
+  let g_
+  let b_
+  
+  //cálculo r' g' b'
+  if (hsbarray[0]<60){
+    r_=C
+    g_=X
+    b_=0  
+  } else if(60<= hsbarray[0] && hsbarray[0]<120){
+    r_=X
+    g_=C
+    b_=0 
+  } else if(120<= hsbarray[0] && hsbarray[0]<180){
+    r_=0
+    g_=C
+    b_=X 
+  }else if(180<= hsbarray[0] && hsbarray[0]<240){
+    r_=0
+    g_=X
+    b_=C 
+  }else if(240<= hsbarray[0] && hsbarray[0]<300){
+    r_=X
+    g_=0
+    b_=C 
+  }else if(300<= hsbarray[0] && hsbarray[0]<360){
+    r_=C
+    g_=0
+    b_=X 
+  }
+  
+  //cálculo y redondo de r g b
+  let rgbarray=[Math.round((r_+m)*100)/100,Math.round((g_+m)*100)/100,Math.round((b_+m)*100)/100]
+  
+  return rgbarray
+}
+{{< /highlight >}}
 
 Como se puede observar, el programa además muestra el color complementario, la triada y los análogos del color principal todo el tiempo, y estos también se calculan y actualizan en tiempo real a medida que jugamos con el color principal.
 
