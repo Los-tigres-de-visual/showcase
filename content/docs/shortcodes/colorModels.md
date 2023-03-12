@@ -53,7 +53,7 @@ Estas combinaciones de colores son muy utilizadas en diseño y se tiende a usarl
 
 ![color combination](/showcases/sketches/colorModels/transformation.png)
 
-
+## Implementación
 
 En el siguiente ejercicio representamos los conceptos e ideas anteriormente de forma que partimos de un color *principal* en el modelo **rgb** que puede ser construido modificando sus tres componentes (r, g ,b) por medio de deslizadores. El color se actualiza en tiempo real. En cualquier momento podemos seleccionar una de las opciones en la parte superior para cambiar el modelo de color, lo que ocasionará que a partir de los valores del modelo actual se realicen cálculos matemáticos para encontrar los valores de los componentes del nuevo modelo que producen el mismo color. El cambio se refleja en los deslizadores, que ahora describirán los componentes del nuevo modelo y que tomarán los valores que corresponden al color seleccionado.
 El programa permite cambiar entre RGB, HSL y HSB en cualquier orden para explorar las equivalencias entre ellos.
@@ -138,7 +138,7 @@ function HSLToHSB(hslarray){
 }
 {{< /highlight >}}
 
-### HSB to RGB
+### HSB a RGB
 {{< highlight js >}}
 function HSBTorgb(hsbarray){
   
@@ -178,7 +178,7 @@ function HSBTorgb(hsbarray){
     b_=X 
   }
   
-  //cálculo y redondo de r g b
+  //cálculo y redondeo de r g b
   let rgbarray=[Math.round((r_+m)*100)/100,Math.round((g_+m)*100)/100,Math.round((b_+m)*100)/100]
   
   return rgbarray
@@ -191,13 +191,21 @@ Como se puede observar, el programa además muestra el color complementario, la 
 
 Dentro de la investigación se encontraron dos formas de calcular el color complementario por un lado en rgb y por otro en HSL/HSB.
 
-El primero corresponde a restar de 255 (blanco) el valor de cada componente del color principal para hallar los valores del complemento. La teoría es que para que dos colores sean complementarios, la suma de ambos debe ser el color blanco.
+El primero corresponde a restar de 255 (blanco) el valor de cada componente del color principal para hallar los valores del complemento. En nuestro caso usamos valores de rgb normalizados, por lo que la resta debe ser de 1 en lugar de 255. La teoría es que para que dos colores sean complementarios, la suma de ambos debe ser el color blanco.
 
-//código 
+{{< highlight js >}}
+//cálculo complementario
+    fill(1-rslider.value(),1-gslider.value(),1-bslider.value())
+    circle(50,210,80);
+{{< /highlight >}}
 
-La segunda forma consiste en desplazarnos 180° en el círculo cromático para encontrar el color físicamente opuesto al principal, por lo que en HSL/HSB basta con sumar 180° al valor del matiz.
+La segunda forma consiste en desplazarnos 180° en el círculo cromático para encontrar el color físicamente opuesto al principal, por lo que en HSL/HSB basta con sumar 180° al valor del matiz; los demás valores se mantienen igual.
 
-//código
+{{< highlight js >}}
+//complement
+   fill('hsl('+(Math.round(hs.value())+180)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(50,210,80);
+{{< /highlight >}}
 
 {{< hint warning >}}
 En este programa se usaron ambas técnicas, por lo que en cada modelo se utiliza el método correspondiente. Nótese que estos no son 100% equivalentes pues al cambiar entre rgb y cualquiera de los otros dos modelos podemos ver cambios en el color complementario, siendo la diferencia más o menos drástica dependiendo del color.
@@ -207,7 +215,14 @@ En este programa se usaron ambas técnicas, por lo que en cada modelo se utiliza
 
 Para el cálculo de análogos nos basamos en el círculo cromático y nos desplazamos 30° a lado y lado del color principal para hallarlos. En HSL/HSB esto se hace sobre el valor del matiz.
 
-//código
+{{< highlight js >}}
+//analogous
+    fill('hsl('+(Math.round(hs.value())+30)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(350,160,80);
+    
+    fill('hsl('+(Math.round(hs.value())+330)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(350,250,80);
+{{< /highlight >}}
 
 {{< hint warning >}}
 nótese la similitud de los análogos y el color principal por su cercanía en el circulo cromático
@@ -217,7 +232,14 @@ nótese la similitud de los análogos y el color principal por su cercanía en e
 
 Finalmente encontramos la triada de color seleccionando los dos colores que sean equidistantes entre sí y con el color principal sobre el círculo cromático. Puesto que el círculo tiene 360°, basta con aumentar el matiz en pasos de 120° para hallarlos.
 
-//código
+{{< highlight js >}}
+//triad
+    fill('hsl('+(Math.round(hs.value())+120)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(450,160,80);
+    
+    fill('hsl('+(Math.round(hs.value())+240)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(450,250,80);
+{{< /highlight >}}
 
 {{< hint warning >}}
 nótese las diferencias más drásticas entre la triada y los análogos.
