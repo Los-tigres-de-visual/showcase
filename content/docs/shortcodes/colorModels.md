@@ -8,12 +8,15 @@ Es quizá el modelo de color más conocido y se usa especialmente para represent
 
 El modelo rgb se suele representar por medio de un cubo construido a partir de un plano de tres dimensiones en el que cada eje corresponde a la intensidad de uno de los tres colores primarios. En este caso la tupla del color es las tres coordenadas en el plano que señalan un punto específico en el cubo donde se encuentra el color en cuestión.
 
-![rgb cube](/showcases/content/sketches/colorModels/rgb.jpg)
+![rgb cube](/showcase/content/sketches/colorModels/rgb.jpg)
+{{< details "Referencia" [open] >}}
+[](https://miro.medium.com/max/800/1*_LvMaBFLax7GWbTuBkT9Ag.jpeg)
+{{< /details >}}
 
 ## HSL
 Se trata de un modelo usado principalmente en diseño gráfico y en edición de imagen. Surgió bajo la idea de representar el color separándolo en componentes que los humanos más fácilmente asocian como atributos del color. La tupla entonces tiene tres valores: matiz, saturación y luminosidad  o en inglés Hue, Saturation, Lightness (HSL). El matiz se refiere al color puro o tono que nos permite a simple vista diferenciar un color de otro. Si miramos el círculo cromático decimos que el matiz corresponde al punto del círculo en el que estamos; es por esto que su valor usualmente corresponde a los grados de un arco en un círculo ( es decir que toma valores entre 0° y 360°). Tradicionalmente 0° corresponde al rojo puro, 120° corresponde al verde puro y 240° al azul puro (desde ya podemos ver algunas ideas que relacionan al rgb con el hsl)
 
-![color wheel](/showcases/sketches/colorModels/colorwheel.webp)
+![color wheel](/showcase/sketches/colorModels/colorwheel.webp)
 
 La saturación representa la intensidad o pureza del color. También se refiere como la cantidad de gris en el color y se describe usualmente como un porcentaje, siendo 0% gris y 100% el color puro. Este componente se asocia con qué tan vibrante o vívido es el color.
 
@@ -268,7 +271,7 @@ nótese las diferencias más drásticas entre la triada y los análogos.
 
 
 
-{{< p5-global-iframe id="colorModels" width="550" height="470" >}}
+{{< p5-global-iframe id="colorModels" width="540" height="460" >}}
   let type="rgb"
 function setup() {
   createCanvas(520, 400);
