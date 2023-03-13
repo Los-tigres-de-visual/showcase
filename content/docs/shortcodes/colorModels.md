@@ -44,6 +44,15 @@ En la imagen podemos ver que en las esquinas del cubo de RGB se ubican los color
 Aquí hay un par de videos que ilustran la transformación:
 
 ## Video
+<iframe
+    width="640"
+    height="480"
+    src="https://en.wikipedia.org/wiki/File:RGB_2_HSV_conversion_with_grid.ogg"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+>
+</iframe>
 
 ## Color Complementario, triada y análogos
 
@@ -246,7 +255,7 @@ nótese las diferencias más drásticas entre la triada y los análogos.
 {{< /hint >}}
 
 
-{{< p5-global-iframe id="colorModels" width="625" height="625" >}}
+{{< p5-global-iframe id="colorModels" width="450" height="450" >}}
   let type="rgb"
 function setup() {
   createCanvas(520, 400);
