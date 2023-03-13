@@ -9,8 +9,9 @@ Es quizá el modelo de color más conocido y se usa especialmente para represent
 El modelo rgb se suele representar por medio de un cubo construido a partir de un plano de tres dimensiones en el que cada eje corresponde a la intensidad de uno de los tres colores primarios. En este caso la tupla del color es las tres coordenadas en el plano que señalan un punto específico en el cubo donde se encuentra el color en cuestión.
 
 ![rgb cube](/showcase/content/sketches/colorModels/rgb.jpg)
+
 {{< details "Referencia" [open] >}}
-[](https://miro.medium.com/max/800/1*_LvMaBFLax7GWbTuBkT9Ag.jpeg)
+Click en la [referencia](https://miro.medium.com/max/800/1*_LvMaBFLax7GWbTuBkT9Ag.jpeg)
 {{< /details >}}
 
 ## HSL
