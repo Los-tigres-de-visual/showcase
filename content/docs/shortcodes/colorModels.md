@@ -268,7 +268,7 @@ nótese las diferencias más drásticas entre la triada y los análogos.
 
 
 
-{{< p5-global-iframe id="colorModels" width="520" height="470" >}}
+{{< p5-global-iframe id="colorModels" width="550" height="470" >}}
   let type="rgb"
 function setup() {
   createCanvas(520, 400);
@@ -652,3 +652,9 @@ function hsbf(){
   Bslider= createSlider(0,1,B,0.01);
 }
 {{< /p5-global-iframe >}}
+
+## Conclusiones
+
+Los modelos de color son variados y permiten estudiar eñ color desde distintas características, según la necesidad y el área en la que se apliquen. A pesar de sus diferencias siempre es posible pasar de un modelo a otro por lo general con muy buena exactitud, y evaluar el mismo color desde diferentes componentes. Además los colores complementarios, análogos y la triada de color son combinaciones útiles en el diseño no es difícil obtenerlos a partir de un color dado.
+
+A futuro se podría trabajar sobre más modelos o realizar las transformaciones de manera gráfica para que sean fáciles de visualizar y aporten al entendimiento de los modelos de color.
