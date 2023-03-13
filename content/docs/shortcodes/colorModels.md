@@ -43,18 +43,30 @@ En la imagen podemos ver que en las esquinas del cubo de RGB se ubican los color
 
 Aquí hay un par de videos que ilustran la transformación:
 
-## Video
+## RGB a HSL
 <iframe
     width="640"
     height="480"
-    src="https://en.wikipedia.org/wiki/File:RGB_2_HSV_conversion_with_grid.ogg"
+    src=https://upload.wikimedia.org/wikipedia/commons/4/46/RGB_2_HSL_conversion_with_grid.ogg
     frameborder="0"
     allow="autoplay; encrypted-media"
     allowfullscreen
 >
 </iframe>
 
-## Color Complementario, triada y análogos
+## RGB a HSB
+
+<iframe
+    width="640"
+    height="480"
+    src="https://upload.wikimedia.org/wikipedia/commons/5/59/RGB_2_HSV_conversion_with_grid.ogg"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+>
+</iframe>
+
+## Color complementario, triada y análogos
 
 En teoría del color se habla de conjuntos de colores que trabajan bien juntos y se combinan de tal forma que apelan al usuario? Algunas de estas combinaciones son los colores complementarios, la triada de un color y los colores análogos. Partimos del círculo cromático y nos situamos en un color. El color complementario de nuestro color principal será el que se encuentra completamente al otro lado del círculo, es decir a 180°. La combinación de estos dos colores debe dar como resultado el color neutro ( blanco en general?). En cambio si partiendo de nuestro color original nos desplazamos por el círculo 120° encontraremos nuestro primer color de la triada, y al movernos 120° de nuevo (240° desde el origen) encontraremos el segundo. Estos dos colores junto con el original describen un triángulo equilátero en el círculo. Finalmente, los colores análogos son aquellos continuos al color original, por lo que basta desplazarnos unos 30° en ambas direcciones del círculo para hallarlos y tener un gama más bien cercana de tonos.
 
@@ -255,7 +267,8 @@ nótese las diferencias más drásticas entre la triada y los análogos.
 {{< /hint >}}
 
 
-{{< p5-global-iframe id="colorModels" width="450" height="450" >}}
+
+{{< p5-global-iframe id="colorModels" width="490" height="480" >}}
   let type="rgb"
 function setup() {
   createCanvas(520, 400);
