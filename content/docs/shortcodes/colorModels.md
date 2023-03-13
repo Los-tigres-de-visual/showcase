@@ -268,7 +268,7 @@ nótese las diferencias más drásticas entre la triada y los análogos.
 
 
 
-{{< p5-global-iframe id="colorModels" width="490" height="480" >}}
+{{< p5-global-iframe id="colorModels" width="520" height="470" >}}
   let type="rgb"
 function setup() {
   createCanvas(520, 400);
