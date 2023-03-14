@@ -1,4 +1,4 @@
-# Color blind filter
+# Filtro para Daltónicos
 
 <link rel="stylesheet" href="/showcase/sketches/colorBlindFilter/twentytwenty.css">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -121,167 +121,168 @@ Es una deficiencia de los conos de longitud de onda larga (L) en el ojo humano, 
 Es una deficiencia de los conos de longitud de onda corta (S) en el ojo humano, lo que hace que se perciban menos los tonos de color azul y se confundan con tonos de color verde o amarillo. Las personas con tritanopía suelen tener dificultades para distinguir los tonos de color azul y verde, y pueden verlos como tonos de color gris o marrón.
 {{< /hint >}}
 
-Para ver la implementación de cada uno de estos filtros en `p5` da clic en uno de los siguientes botones.
+## ¿Cómo las personas daltónicas ven los colores?
 
-<div class="divButton">
-    <button onclick="mostrar_deuteranopia()" id="deuteranopiaButton">Deuteranopía</button>
-    <button onclick="mostrar_protanopia()" id="protanopiaButton">Protanopía</button>
-    <button onclick="mostrar_tritanopia()" id="tritanopiaButton">Tritanopía</button>
-</div>
+Antes de mostrar el filtro creado para corregir el daltonismo, queremos mostrarte cómo las personas con daltonismo aprecian los distintos colores.
 
-<div id="deuteranopiaDiv">
-    {{< highlight js >}}
-    let img;
+Esto lo logramos mediante el siguiente código base.
 
-    function preload() {
-        img = loadImage('/showcase/sketches/colorBlindFilter/imagenBase.jpg');
+{{< highlight js >}}
+let img;
+
+function preload() {
+    img = loadImage('/showcase/sketches/colorBlindFilter/imagenBase.jpg');
+}
+
+function deuteranopiaFilter(img) {
+    img.loadPixels();
+
+    for (let i = 0; i < img.pixels.length; i += 4) {
+        // Se toma el RGB de cada pixel
+        let r = img.pixels[i];
+        let g = img.pixels[i + 1];
+        let b = img.pixels[i + 2];
+
+        // Cálculo de la nueva intensidad de los canales de color
+        // En este caso, la matriz identidad representa la imagen original
+        let newR = 1 * r + 0.0 * g + 0.0 * b;
+        let newG = 0.0 * r + 1 * g + 0.0 * b;
+        let newB = 0.0 * r + 0.0 * g + 1 * b;
+
+        img.pixels[i] = newR;
+        img.pixels[i + 1] = newG;
+        img.pixels[i + 2] = newB;
     }
 
-    function deuteranopiaFilter(img) {
-        img.loadPixels();
+    //Se actualizan los pixeles con el nuevo RGB calculado anteriormente
+    img.updatePixels();
 
-        for (let i = 0; i < img.pixels.length; i += 4) {
-            let r = img.pixels[i];
-            let g = img.pixels[i + 1];
-            let b = img.pixels[i + 2];
+    return img;
+}
 
-            // Cálculo de la nueva intensidad de los canales de color
-            let newR = 0.80 * r + 0.2 * g + 0.0 * b;
-            let newG = 0.25833 * r + 0.74167 * g + 0.0 * b;
-            let newB = 0.0 * r + 0.14167 * g + 0.85833 * b;
+function setup() {
+    createCanvas(984, 655);
 
-            img.pixels[i] = newR;
-            img.pixels[i + 1] = newG;
-            img.pixels[i + 2] = newB;
-        }
+    // Llamada a la función deuteranopiaFilter()
+    img = deuteranopiaFilter(img);
+}
 
-        img.updatePixels();
+function draw() {
+    background(220);
 
-        return img;
-    }
+    // Mostramos la imagen en nuestro sketch
+    image(img, 0, 0);
+}
 
-    function setup() {
-        createCanvas(984, 655);
+{{< /highlight >}}
 
-        // Llamada a la función deuteranopiaFilter()
-        img = deuteranopiaFilter(img);
-    }
+{{< hint warning >}}
+**Derechos de Autor**  
+Los distintos valores de la matrices para los filtros fueron tomados del siguiente [repositorio]( https://github.com/MaPePeR/jsColorblindSimulator) desarrollado por [MaPePeR]( https://github.com/MaPePeR). También tiene un simulador de daltonismo en la siguiente [página]( https://www.color-blindness.com/coblis-color-blindness-simulator/).
+{{< /hint >}}
 
-    function draw() {
-        background(220);
+### Deuteranopía
 
-        // Mostramos la imagen en nuestro sketch
-        image(img, 0, 0);
-    }
+Los valores de la matriz son.
 
-    {{< /highlight >}}
+{{< highlight js >}}
+let newR = 0.80 * r + 0.2 * g + 0.0 * b;
+let newG = 0.25833 * r + 0.74167 * g + 0.0 * b;
+let newB = 0.0 * r + 0.14167 * g + 0.85833 * b;
+
+{{< /highlight >}}
 
 <div class="twentytwenty-container" >
-        <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
-        <img src="/showcase/sketches/colorBlindFilter/imagenDeuteranopia.png" />
-    </div>
+    <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
+    <img src="/showcase/sketches/colorBlindFilter/imagenDeuteranopia.png" />
 </div>
 
-<div id="protanopiaDiv">
+### Protanopía
+
+Los valores de la matriz son.
+
 {{< highlight js >}}
-    let img;
+let newR = 0.56667 * r + 0.43333 * g + 0.0 * b;
+let newG = 0.55833 * r + 0.44167 * g + 0.0 * b;
+let newB = 0.0 * r + 0.24167 * g + 0.75833 * b;
 
-    function preload() {
-        img = loadImage('/showcase/sketches/colorBlindFilter/imagenBase.jpg');
-    }
+{{< /highlight >}}
 
-    function deuteranopiaFilter(img) {
-        img.loadPixels();
-
-        for (let i = 0; i < img.pixels.length; i += 4) {
-            let r = img.pixels[i];
-            let g = img.pixels[i + 1];
-            let b = img.pixels[i + 2];
-
-            // Cálculo de la nueva intensidad de los canales de color
-            let newR = 0.56667 * r + 0.43333 * g + 0.0 * b;
-            let newG = 0.55833 * r + 0.44167 * g + 0.0 * b;
-            let newB = 0.0 * r + 0.24167 * g + 0.75833 * b;
-
-            img.pixels[i] = newR;
-            img.pixels[i + 1] = newG;
-            img.pixels[i + 2] = newB;
-        }
-
-        img.updatePixels();
-
-        return img;
-    }
-
-    function setup() {
-        createCanvas(984, 655);
-
-        // Llamada a la función deuteranopiaFilter()
-        img = deuteranopiaFilter(img);
-    }
-
-    function draw() {
-        background(220);
-
-        // Mostramos la imagen en nuestro sketch
-        image(img, 0, 0);
-    }
-
-    {{< /highlight >}}
-<div class="twentytwenty-container">
-        <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
-        <img src="/showcase/sketches/colorBlindFilter/imagenProtanopia.png" />
-    </div>
+<div class="twentytwenty-container" >
+    <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
+    <img src="/showcase/sketches/colorBlindFilter/imagenProtanopia.png" />
 </div>
 
-<div id="tritanopiaDiv">
+### Tritanopía
+
+Los valores de la matriz son.
+
 {{< highlight js >}}
-    let img;
+let newR = 0.95 * r + 0.05 * g + 0.0 * b;
+let newG = 0.0 * r + 0.43333 * g + 0.56667 * b;
+let newB = 0.0 * r + 0.475 * g + 0.525 * b;
 
-    function preload() {
-        img = loadImage('/showcase/sketches/colorBlindFilter/imagenBase.jpg');
-    }
+{{< /highlight >}}
 
-    function deuteranopiaFilter(img) {
-        img.loadPixels();
+<div class="twentytwenty-container" >
+    <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
+    <img src="/showcase/sketches/colorBlindFilter/imagenTritanopia.png" />
+</div>
 
-        for (let i = 0; i < img.pixels.length; i += 4) {
-            let r = img.pixels[i];
-            let g = img.pixels[i + 1];
-            let b = img.pixels[i + 2];
+## Filtro Correctivo
 
-            // Cálculo de la nueva intensidad de los canales de color
-            let newR = 0.95 * r + 0.05 * g + 0.0 * b;
-            let newG = 0.0 * r + 0.43333 * g + 0.56667 * b;
-            let newB = 0.0 * r + 0.475 * g + 0.525 * b;
+Para implementar dicho filtro, usamos un algoritmo sencillo que aplica un filtro de corrección de color, el cual toma una matriz de corrección de color para aplicarla a la imagen y compensar la pérdida de color. 
 
-            img.pixels[i] = newR;
-            img.pixels[i + 1] = newG;
-            img.pixels[i + 2] = newB;
-        }
+{{< hint info >}}
+**Derechos de Autor**  
+Estos valores también fueron tomados del siguiente [repositorio]( https://github.com/MaPePeR/jsColorblindSimulator) desarrollado por [MaPePeR]( https://github.com/MaPePeR).
+{{< /hint >}}
 
-        img.updatePixels();
+{{< hint warning >}}
+**Nota**  
+Estos valores fueron obtenidos (según el autor) mediante prueba y error y no se pueden comparar con otros algoritmos muchos más avanzados como los Algoritmos de remapeo de color o de Aprendizaje automático. La calidad del filtro **dista** mucho de los algoritmos mencionados anteriormente.
+{{< /hint >}}
 
-        return img;
-    }
+El código utilizado es exactamente el mismo presentado en la sección anterior, lo único que cambia son los valores de la matriz que vamos a utilizar. A continuación, presentamos dichos valores con su gráfica comparativa.
 
-    function setup() {
-        createCanvas(984, 655);
+### Deuteranopía
 
-        // Llamada a la función deuteranopiaFilter()
-        img = deuteranopiaFilter(img);
-    }
+{{< highlight js >}}
+let newR = 0.625 * r + 0.375 * g + 0.0 * b;
+let newG = 0.7 * r + 0.3 * g + 0.0 * b;
+let newB = 0.0 * r + 0.3 * g + 0.7 * b;
 
-    function draw() {
-        background(220);
+{{< /highlight >}}
 
-        // Mostramos la imagen en nuestro sketch
-        image(img, 0, 0);
-    }
+<div class="twentytwenty-container" >
+    <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
+    <img src="/showcase/sketches/colorBlindFilter/filtroDeuteranopia.png" />
+</div>
 
-    {{< /highlight >}}
-<div class="twentytwenty-container">
-        <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
-        <img src="/showcase/sketches/colorBlindFilter/imagenTritanopia.png" />
-    </div>
+### Protanopía
+
+{{< highlight js >}}
+let newR = 0.81667 * r + 0.18333 * g + 0.0 * b;
+let newG = 0.33333 * r + 0.66667 * g + 0.0 * b;
+let newB = 0.0 * r + 0.125 * g + 0.875 * b;
+
+{{< /highlight >}}
+
+<div class="twentytwenty-container" >
+    <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
+    <img src="/showcase/sketches/colorBlindFilter/filtroProtanopia.png" />
+</div>
+
+### Tritanopía
+
+{{< highlight js >}}
+let newR = 0.96667 * r + 0.3333 * g + 0.0 * b;
+let newG = 0.0 * r + 0.73333 * g + 0.26667 * b;
+let newB = 0.0 * r + 0.18333 * g + 0.81667 * b;
+
+{{< /highlight >}}
+
+<div class="twentytwenty-container" >
+    <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
+    <img src="/showcase/sketches/colorBlindFilter/filtroTritanopia.png" />
 </div>
