@@ -41,6 +41,8 @@ Se realiza a través de animación y desplazamiento en paralelo, permitiendo al 
 </div>
 {{< /details >}}
 
+<br>
+
 {{< hint info >}}
 <div style="text-align: center;">
 
@@ -122,13 +124,70 @@ img.filter(BLUR, 10);
 <div style="text-align: justify;">
 Se hará necesario animar una gran cantidad de objetos que por medio de un algoritmo simple, simulará la profundidad de dichos objetos. Con este sistema se podrá crear, mover, cambiar y eliminar las partículas durante un tiempo determinado. 
 
-Para este caso se creará una clase en <code>P5 JS</code>, que actuará como una plantilla, definiendo las características y conportamientos de una entidad.
 </div>
 {{< /details >}}
 <div style="text-align: center;">
 <video src="/showcase/sketches/depthPerception/Particles.mp4" controls style="max-width: 500px;" autoplay>
 </video>
 </div>
+
+<div style="text-align: justify;">
+Para este caso se creará una clase en <code>P5 JS</code>, que actuará como una plantilla, definiendo las características y comportamientos de una entidad.
+
+{{< highlight js >}}
+let fi1;
+let fi2;
+let fiy;
+class Fish{
+  constructor(minR, maxR){
+    this.min_R = minR;
+    this.max_R = maxR;
+    this.radius = random(minR, maxR);
+
+    this.loc = createVector(
+      random(0-this.radius, width+this.radius),
+      random(0, height)
+    );
+    this.velX = map(this.radius, minR, maxR, minR/100, maxR/100);
+    this.velY = 0;
+
+    this.offset = random(10);
+    
+    fi1 = loadImage('/showcase/sketches/Depth/assets/Pezmoradoizq.png');
+    fi2 = loadImage('/showcase/sketches/Depth/assets/Pezmoradoder.png');
+    fiy = loadImage('/showcase/sketches/Depth/assets/Pezamarillo.png');
+  }
+
+  show(blurAmount){
+    drawingContext.filter = 'blur('+str(blurAmount)+'px)';
+    //fi1.filter(BLUR, blurAmount);
+    image(fi1, this.loc.x, this.loc.y, this.radius, this.radius);
+    image(fi2, -this.loc.x, -this.loc.y, this.radius/2, this.radius/2);
+    image(fiy, this.loc.x*1.5, this.loc.y/2, this.radius/4, this.radius/4);
+  }
+
+  ascend(){
+    let n = map(noise(this.offset),0, 1, -1, 1);
+    this.loc.x += this.velX;
+    this.loc.y += n;
+    this.offset += 0.02;
+  }
+
+  reposition(){
+    if(this.loc.x > width){
+      this.changeRadius();
+      this.loc.x = this.radius -  width;
+      this.loc.y = random(0, height);
+    }
+  }
+
+  changeRadius(){
+    this.radius = random(this.min_R, this.max_R);
+  }
+}
+{{< /highlight >}}
+</div>
+
 
 {{< details "Movement" close >}}
 <div style="text-align: center;">
@@ -141,6 +200,25 @@ Además de ayudar a mantener el contacto visual, el movimiento sirve para genera
 {{< /details >}}
 <div style="text-align: center;">
 <img src="/showcase/sketches/depthPerception/Movement.gif" style="width:300px">
+</div>
+
+
+<div style="text-align: justify;">
+Para este caso en <code>P5 JS</code>, se utiliza el movimiento de la cámara en <b>X</b>, en <b>Y</b> y en <b>Z</b>. Se aplica además, movimiento rotacional usando el valor absoluto de la función seno, sobre ciertos objetos.
+{{< highlight js >}}
+//Movimiento peces fondo
+  camera(camXf1, camYf1, (height/2) / tan(PI/6), camXf1, camYf1, 0, 0, 1, 0);
+  angle = angle + 0.02;
+  
+  //Estrella de mar
+  let k = abs(sin(angle/8)/2);
+  rotate(k);
+  image(estrella, 450, -150, 100, 100);
+  
+  //Rotación peces
+  let c = cos(angle)/4;
+  rotate(c);
+  {{< /highlight >}}
 </div>
 
 
@@ -157,4 +235,11 @@ El valor alpha indica el nivel de transparencia de un píxel. Su uso en esta sec
 <img src="/showcase/sketches/depthPerception/Transparency.jpg" style="width:400px">
 </div>
 
+<br>
+<div  style="text-align: justify;">
+Como resultado final, la percepción de profundidad de imágenes 2D simples y aplicando los conceptos vistos anteriormente, se puede apreciar de la siguiente manera:
+<br><br>
+
 {{< p5-iframe ver="1.5.0" sketch="/showcase/sketches/Depth/sketch.js" lib1="/showcase/sketches/Depth/fish_particles.js"  width="925" height="625" >}}
+
+</div>
