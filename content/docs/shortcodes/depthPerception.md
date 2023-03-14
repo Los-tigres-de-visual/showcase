@@ -156,3 +156,5 @@ El valor alpha indica el nivel de transparencia de un píxel. Su uso en esta sec
 <div style="text-align: center;">
 <img src="/showcase/sketches/depthPerception/Transparency.jpg" style="width:400px">
 </div>
+
+{{< p5-iframe ver="1.5.0" sketch="/showcase/sketches/Depth/sketch.js" lib1="/showcase/sketches/Depth/fish_particles.js"  width="925" height="625" >}}
