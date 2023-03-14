@@ -41,7 +41,12 @@ Se realiza a través de animación y desplazamiento en paralelo, permitiendo al 
 </div>
 {{< /details >}}
 
+{{< hint info >}}
+<div style="text-align: center;">
+
 ## *Desarrollo*
+</div>
+{{< /hint  >}}
 
 {{< details "Cámara" close >}}
 <div style="text-align: center;">
