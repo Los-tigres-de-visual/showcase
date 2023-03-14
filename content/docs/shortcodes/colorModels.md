@@ -47,7 +47,7 @@ A pesar de que estos modelos sean diferentes y a veces no fácilmente comparable
 
 Es entendible que el paso entre HSL y HSB sea corto (aunque no necesariamente intuitivo), pero la transformación de RGB a HSL o HSB quizá no es fácil de visualizar. Utilizando las representaciones que ya vimos de dichos modelos, el cubo y los cilindros, es más fácil seguir dicha transformación.
 
-![transformation](/showcase/sketches/colorModels/Hsl-and-hsv.svg)
+![transformation](/showcase/sketches/colorModels/Hsl-and-hsv.svg.png)
 
 {{< hint info >}}
 [Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
