@@ -8,7 +8,7 @@ Es quizá el modelo de color más conocido y se usa especialmente para represent
 
 El modelo rgb se suele representar por medio de un cubo construido a partir de un plano de tres dimensiones en el que cada eje corresponde a la intensidad de uno de los tres colores primarios. En este caso la tupla del color es las tres coordenadas en el plano que señalan un punto específico en el cubo donde se encuentra el color en cuestión.
 
-![rgb cubes](/showcase/content/sketches/colorModels/rgb.jpg)
+![rgb cubes](/showcase/sketches/colorModels/rgb.jpg)
 {{< hint info >}}
 [Referencia](http://www.ece.northwestern.edu/local-apps/matlabhelp/toolbox/images/color5.html)
 {{< /hint >}}
@@ -35,7 +35,7 @@ HSB (Hue, Saturation, Brigthness) o mejor conocido como HSV (Hue, Saturation, Va
 
 Por lo anterior, la representación del HSB es también un cilindro, pero con la parte superior representando los colores vistos a completa luz y no el blanco como en HSL: 
 
-![hsb cilinder](/showcases/sketches/colorModels/hsv.PNG)
+![hsb cilinder](/showcase/sketches/colorModels/hsv.PNG)
 
 {{< hint info >}}
 [Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
@@ -47,7 +47,7 @@ A pesar de que estos modelos sean diferentes y a veces no fácilmente comparable
 
 Es entendible que el paso entre HSL y HSB sea corto (aunque no necesariamente intuitivo), pero la transformación de RGB a HSL o HSB quizá no es fácil de visualizar. Utilizando las representaciones que ya vimos de dichos modelos, el cubo y los cilindros, es más fácil seguir dicha transformación.
 
-![transformation](/showcases/sketches/colorModels/Hsl-and-hsv.svg)
+![transformation](/showcase/sketches/colorModels/Hsl-and-hsv.svg)
 
 {{< hint info >}}
 [Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
@@ -90,7 +90,7 @@ En teoría del color se habla de conjuntos de colores que trabajan bien juntos y
 
 Estas combinaciones de colores son muy utilizadas en diseño y se tiende a usarlas para generar gusto y equilibrio en las piezas visuales.
 
-![color combination](/showcases/sketches/colorModels/transformation.png)
+![color combination](/showcase/sketches/colorModels/transformation.png)
 
 {{< hint info >}}
 [Referencia](https://nolich.com/psicologia-del-color-en-el-cine/)
@@ -102,12 +102,12 @@ En el siguiente ejercicio representamos los conceptos e ideas anteriormente de f
 El programa permite cambiar entre RGB, HSL y HSB en cualquier orden para explorar las equivalencias entre ellos.
 
 {{< hint warning >}}
-notese que al cambiar de modelo, el color principal no cambia, pues se calcula exactamente el mismo color en el nuevo modelo
+Notese que al cambiar de modelo, el color principal no cambia, pues se calcula exactamente el mismo color en el nuevo modelo
 {{< /hint >}}
 Estando en un modelo diferente también se puede interactuar con los deslizadores para cambiar el color y explorar cómo funcionan los componentes de dicho modelo.
 
 {{< hint warning >}}
-use esta opción para evidenciar las diferencias entre los modelos, en especial entre HSL y HSB
+Use esta opción para evidenciar las diferencias entre los modelos, en especial entre HSL y HSB
 {{< /hint >}}
 
 Aquí se muestran algunos de los procesos matemáticos utilizados para calcular las equivalencias entre modelos:
@@ -272,7 +272,7 @@ Para el cálculo de análogos nos basamos en el círculo cromático y nos despla
 {{< /highlight >}}
 
 {{< hint warning >}}
-nótese la similitud de los análogos y el color principal por su cercanía en el circulo cromático
+Nótese la similitud de los análogos y el color principal por su cercanía en el circulo cromático
 {{< /hint >}}
 
 ## Triada de color
@@ -289,12 +289,12 @@ Finalmente encontramos la triada de color seleccionando los dos colores que sean
 {{< /highlight >}}
 
 {{< hint warning >}}
-nótese las diferencias más drásticas entre la triada y los análogos.
+Nótese las diferencias más drásticas entre la triada y los análogos.
 {{< /hint >}}
 
 
 
-{{< p5-global-iframe id="colorModels" width="540" height="460" >}}
+{{< p5-global-iframe id="colorModels" width="540" height="450" >}}
  //Conversión modelos de color Santiago Rodríguez Camargo
   let type="rgb"
 function setup() {
