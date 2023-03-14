@@ -10,13 +10,16 @@ El modelo rgb se suele representar por medio de un cubo construido a partir de u
 
 ![rgb cubes](/showcase/content/sketches/colorModels/rgb.jpg)
 {{< hint info >}}
-[Referencia] (https://miro.medium.com/max/800/1*_LvMaBFLax7GWbTuBkT9Ag.jpeg)
+[Referencia](http://www.ece.northwestern.edu/local-apps/matlabhelp/toolbox/images/color5.html)
 {{< /hint >}}
 
 ## HSL
 Se trata de un modelo usado principalmente en diseño gráfico y en edición de imagen. Surgió bajo la idea de representar el color separándolo en componentes que los humanos más fácilmente asocian como atributos del color. La tupla entonces tiene tres valores: matiz, saturación y luminosidad  o en inglés Hue, Saturation, Lightness (HSL). El matiz se refiere al color puro o tono que nos permite a simple vista diferenciar un color de otro. Si miramos el círculo cromático decimos que el matiz corresponde al punto del círculo en el que estamos; es por esto que su valor usualmente corresponde a los grados de un arco en un círculo ( es decir que toma valores entre 0° y 360°). Tradicionalmente 0° corresponde al rojo puro, 120° corresponde al verde puro y 240° al azul puro (desde ya podemos ver algunas ideas que relacionan al rgb con el hsl)
 
-![color wheel](/showcases/sketches/colorModels/colorwheel.webp)
+![color wheel](/showcase/sketches/colorModels/colorwheel.webp)
+{{< hint info >}}
+[Referencia](https://shreyasminocha.me/blog/hsl-intuition/)
+{{< /hint >}}
 
 La saturación representa la intensidad o pureza del color. También se refiere como la cantidad de gris en el color y se describe usualmente como un porcentaje, siendo 0% gris y 100% el color puro. Este componente se asocia con qué tan vibrante o vívido es el color.
 
@@ -24,7 +27,7 @@ Finalmente tenemos la luminosidad, que a veces es más fácil de entender como b
 
 El modelo HSL se suele representar como un cilindro, en el que la altura es la luminosidad, la distancia desde el eje al perímetro es la saturación y el matiz los grados alrededor del cilindro: 
 
-![hsl cilinder](/showcases/sketches/colorModels/hsl.PNG)
+![hsl cilinder](/showcase/sketches/colorModels/hsl.PNG)
 
 ## HSB
 
@@ -34,6 +37,10 @@ Por lo anterior, la representación del HSB es también un cilindro, pero con la
 
 ![hsb cilinder](/showcases/sketches/colorModels/hsv.PNG)
 
+{{< hint info >}}
+[Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
+{{< /hint >}}
+
 ## Conversión
 
 A pesar de que estos modelos sean diferentes y a veces no fácilmente comparables, al tratarse de modelos matemáticos, no debe sorprender que sea posible pasar de uno a otro mediante fórmulas matemáticas, y por ende obtener un mismo color de forma exacta en diferentes modelos.
@@ -41,6 +48,10 @@ A pesar de que estos modelos sean diferentes y a veces no fácilmente comparable
 Es entendible que el paso entre HSL y HSB sea corto (aunque no necesariamente intuitivo), pero la transformación de RGB a HSL o HSB quizá no es fácil de visualizar. Utilizando las representaciones que ya vimos de dichos modelos, el cubo y los cilindros, es más fácil seguir dicha transformación.
 
 ![transformation](/showcases/sketches/colorModels/Hsl-and-hsv.svg)
+
+{{< hint info >}}
+[Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
+{{< /hint >}}
 
 En la imagen podemos ver que en las esquinas del cubo de RGB se ubican los colores puros y mediante la transformación estos colores se unifican en un plano. En HSL el negro deciende mientras que el blanco sube situandose y expandiéndose en las bases del cilindro, dejado los colores puros en la sección media del cilindro. Por otro lado, en HSV los colores puros se mantienen al nivel del blanco y todos se mantienen en la parte superior del cilindro, con el blanco en el centro, y dejando el negro en la base inferior.
 
@@ -69,6 +80,10 @@ Aquí hay un par de videos que ilustran la transformación:
 >
 </iframe>
 
+{{< hint info >}}
+[Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
+{{< /hint >}}
+
 ## Color complementario, triada y análogos
 
 En teoría del color se habla de conjuntos de colores que trabajan bien juntos y se combinan de tal forma que apelan al usuario? Algunas de estas combinaciones son los colores complementarios, la triada de un color y los colores análogos. Partimos del círculo cromático y nos situamos en un color. El color complementario de nuestro color principal será el que se encuentra completamente al otro lado del círculo, es decir a 180°. La combinación de estos dos colores debe dar como resultado el color neutro ( blanco en general?). En cambio si partiendo de nuestro color original nos desplazamos por el círculo 120° encontraremos nuestro primer color de la triada, y al movernos 120° de nuevo (240° desde el origen) encontraremos el segundo. Estos dos colores junto con el original describen un triángulo equilátero en el círculo. Finalmente, los colores análogos son aquellos continuos al color original, por lo que basta desplazarnos unos 30° en ambas direcciones del círculo para hallarlos y tener un gama más bien cercana de tonos.
@@ -76,6 +91,10 @@ En teoría del color se habla de conjuntos de colores que trabajan bien juntos y
 Estas combinaciones de colores son muy utilizadas en diseño y se tiende a usarlas para generar gusto y equilibrio en las piezas visuales.
 
 ![color combination](/showcases/sketches/colorModels/transformation.png)
+
+{{< hint info >}}
+[Referencia](https://nolich.com/psicologia-del-color-en-el-cine/)
+{{< /hint >}}
 
 # Implementación
 
@@ -209,6 +228,10 @@ function HSBTorgb(hsbarray){
 }
 {{< /highlight >}}
 
+{{< hint info >}}
+La mayoría de ecuaciones se obtuvieron de esta [página](https://www.rapidtables.com/convert/color/)
+{{< /hint >}}
+
 Como se puede observar, el programa además muestra el color complementario, la triada y los análogos del color principal todo el tiempo, y estos también se calculan y actualizan en tiempo real a medida que jugamos con el color principal.
 
 ## Complementario
@@ -272,6 +295,7 @@ nótese las diferencias más drásticas entre la triada y los análogos.
 
 
 {{< p5-global-iframe id="colorModels" width="540" height="460" >}}
+ //Conversión modelos de color Santiago Rodríguez Camargo
   let type="rgb"
 function setup() {
   createCanvas(520, 400);
