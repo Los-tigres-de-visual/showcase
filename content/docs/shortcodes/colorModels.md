@@ -23,7 +23,7 @@ Se trata de un modelo usado principalmente en diseño gráfico y en edición de 
 
 La saturación representa la intensidad o pureza del color. También se refiere como la cantidad de gris en el color y se describe usualmente como un porcentaje, siendo 0% gris y 100% el color puro. Este componente se asocia con qué tan vibrante o vívido es el color.
 
-Finalmente tenemos la luminosidad, que a veces es más fácil de entender como brillo y se refiere a la cantidad de blanco o negro en el color ( o de otra manera que tan claro u oscuro es el color). Igual que la saturación se trata de un porcentaje, donde 0° corresponde a negro y 100° a blanco; se puede entender que cuando la luminosidad está en 50° tenemos un color medio o neutro, en cuanto a claridad se refiere.
+Finalmente tenemos la luminosidad, que a veces es más fácil de entender como brillo y se refiere a la cantidad de blanco o negro en el color ( o de otra manera que tan claro u oscuro es el color). Igual que la saturación se trata de un porcentaje, donde 0% corresponde a negro y 100% a blanco; se puede entender que cuando la luminosidad está en 50% tenemos un color medio o neutro, en cuanto a claridad se refiere.
 
 El modelo HSL se suele representar como un cilindro, en el que la altura es la luminosidad, la distancia desde el eje al perímetro es la saturación y el matiz los grados alrededor del cilindro: 
 
