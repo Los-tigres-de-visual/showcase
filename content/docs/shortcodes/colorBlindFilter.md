@@ -5,38 +5,6 @@
 <script src="/showcase/sketches/colorBlindFilter/jquery.event.move.js"></script>
 <script src="/showcase/sketches/colorBlindFilter/jquery.twentytwenty.js"></script>
 <script src="/showcase/sketches/colorBlindFilter/script.js"></script>
-<script>
-    function mostrar(id){
-        document.getElementById(id).style.display = "block";
-    }
-    function ocultar(id){
-        document.getElementById(id).style.display = "none";
-    }
-    function mostrar_deuteranopia(){
-        let elemento = document.getElementById("deuteranopiaDiv");
-        if(elemento.style.display === "none"){
-            mostrar("deuteranopiaDiv");
-        } else {
-            ocultar("deuteranopiaDiv");
-        }
-    }
-    function mostrar_protanopia(){
-        let elemento = document.getElementById("protanopiaDiv");
-        if(elemento.style.display === "none"){
-            mostrar("protanopiaDiv");
-        } else {
-            ocultar("protanopiaDiv");
-        }
-    }
-    function mostrar_tritanopia(){
-        let elemento = document.getElementById("tritanopiaDiv");
-        if(elemento.style.display === "none"){
-            mostrar("tritanopiaDiv");
-        } else {
-            ocultar("tritanopiaDiv");
-        }
-    }
-</script>
 
 <style>
     button{
@@ -231,28 +199,18 @@ let newB = 0.0 * r + 0.475 * g + 0.525 * b;
 
 ## Filtro Correctivo
 
-Para implementar dicho filtro, usamos un algoritmo sencillo que aplica un filtro de corrección de color, el cual toma una matriz de corrección de color para aplicarla a la imagen y compensar la pérdida de color. 
+Lamentablemente, no pudimos implementar el código en p5 para corregir el daltonismo en imágenes debido a su gran complejidad. El proceso requerido para corregir el daltonismo implica una serie de transformaciones de color que son muy complicadas de realizar en tiempo real y en una plataforma de programación como p5.
+
+Sin embargo, no nos dimos por vencidos y buscamos una solución alternativa. Descubrimos que `Windows` tiene un filtro incorporado que puede ayudar a corregir el daltonismo en las imágenes. Aunque esta solución no es tan completa como la que habíamos esperado inicialmente, nos permitió dar un vistazo de cómo serían las imágenes corregidas y entender mejor el proceso de corrección del daltonismo.
 
 {{< hint info >}}
 **Derechos de Autor**  
-Estos valores también fueron tomados del siguiente [repositorio]( https://github.com/MaPePeR/jsColorblindSimulator) desarrollado por [MaPePeR]( https://github.com/MaPePeR).
+Ten en cuenta que estas imágenes **NO** son generadas por un algoritmo nuestro desarrollado en `p5`. Simplemente son imágenes que genera el filtro de daltonismo incorporado por `Windows`.
 {{< /hint >}}
 
-{{< hint warning >}}
-**Nota**  
-Estos valores fueron obtenidos (según el autor) mediante prueba y error y no se pueden comparar con otros algoritmos muchos más avanzados como los Algoritmos de remapeo de color o de Aprendizaje automático. La calidad del filtro **dista** mucho de los algoritmos mencionados anteriormente.
-{{< /hint >}}
-
-El código utilizado es exactamente el mismo presentado en la sección anterior, lo único que cambia son los valores de la matriz que vamos a utilizar. A continuación, presentamos dichos valores con su gráfica comparativa.
+A continuación, presentamos las comparativas entre la imagen original y los filtros que aplica `Windows`.
 
 ### Deuteranopía
-
-{{< highlight js >}}
-let newR = 0.625 * r + 0.375 * g + 0.0 * b;
-let newG = 0.7 * r + 0.3 * g + 0.0 * b;
-let newB = 0.0 * r + 0.3 * g + 0.7 * b;
-
-{{< /highlight >}}
 
 <div class="twentytwenty-container" >
     <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
@@ -261,26 +219,12 @@ let newB = 0.0 * r + 0.3 * g + 0.7 * b;
 
 ### Protanopía
 
-{{< highlight js >}}
-let newR = 0.81667 * r + 0.18333 * g + 0.0 * b;
-let newG = 0.33333 * r + 0.66667 * g + 0.0 * b;
-let newB = 0.0 * r + 0.125 * g + 0.875 * b;
-
-{{< /highlight >}}
-
 <div class="twentytwenty-container" >
     <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
     <img src="/showcase/sketches/colorBlindFilter/filtroProtanopia.png" />
 </div>
 
 ### Tritanopía
-
-{{< highlight js >}}
-let newR = 0.96667 * r + 0.3333 * g + 0.0 * b;
-let newG = 0.0 * r + 0.73333 * g + 0.26667 * b;
-let newB = 0.0 * r + 0.18333 * g + 0.81667 * b;
-
-{{< /highlight >}}
 
 <div class="twentytwenty-container" >
     <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
