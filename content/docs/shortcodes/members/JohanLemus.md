@@ -20,3 +20,14 @@ Aunque tengo que admitir que a veces me preocupo tanto por mi partida y los movi
 
 Otro de mis pasatiempos favoritos es leer libros de misterios y crímenes por resolver. Me gusta intentar resolver el misterio antes de que el libro revele al culpable, aunque a veces mi teoría termina siendo más loca que el propio misterio, o incluso ***¡termino culpando a todo el mundo menos al verdadero culpable!***.
 
+## Redes Sociales
+Estas son algunas de las redes que utilizo profesionalmente:
+
+### Try Hack Me
+<a href="https://tryhackme.com/p/jolemusp" target="_blank" rel="noopener"> <img src="https://tryhackme-badges.s3.amazonaws.com/jolemusp.png" alt="TryHackMe"> </a>
+
+### Github
+* [Mi perfil](https://github.com/Johan15111)
+
+### HackerRank
+* [Mi perfil](https://www.hackerrank.com/johanlemus1511?hr_r=1)

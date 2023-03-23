@@ -64,6 +64,7 @@
     }
 </style>
 
+## Introducción
 La percepción del color es un aspecto fundamental de nuestra vida diaria. Sin embargo, muchas personas sufren de daltonismo, una discapacidad visual que afecta la capacidad de distinguir ciertos colores. Para ayudar a estas personas a experimentar el mundo del color de una manera más completa, se han desarrollado herramientas y técnicas para simular cómo ven los daltónicos.
 
 Una de estas técnicas es la aplicación de filtros para daltónicos en imágenes digitales. Estos filtros utilizan transformaciones de color que simulan la deficiencia en los conos del ojo humano que causa el daltonismo, y permiten a los daltónicos experimentar imágenes de una manera más completa.
@@ -72,7 +73,7 @@ En este caso desarrollamos una aplicación en `p5` que toma como base la siguien
 
 ![](/showcase/sketches/colorBlindFilter/imagenBase.jpg)
 
-Y aplicamos tres destinos tipos de filtros:
+Y aplicamos tres distintos tipos de filtros:
 
 {{< hint warning >}}
 **Deuteranopía**  
@@ -87,6 +88,22 @@ Es una deficiencia de los conos de longitud de onda larga (L) en el ojo humano, 
 {{< hint info >}}
 **Tritanopía**  
 Es una deficiencia de los conos de longitud de onda corta (S) en el ojo humano, lo que hace que se perciban menos los tonos de color azul y se confundan con tonos de color verde o amarillo. Las personas con tritanopía suelen tener dificultades para distinguir los tonos de color azul y verde, y pueden verlos como tonos de color gris o marrón.
+{{< /hint >}}
+
+## Antecedentes y Trabajo Previo
+Los filtros de daltonismo son herramientas que ayudan a las personas con daltonismo a diferenciar los colores. En la actualidad, existen varios trabajos previos que se han enfocado en desarrollar estos filtros para mejorar la experiencia visual de estas personas.
+
+Uno de los enfoques más comunes es el uso de software y aplicaciones móviles que ajustan la saturación y el brillo de los colores para hacerlos más distinguibles. También se han desarrollado lentes y gafas especiales con filtros de color que ayudan a las personas con daltonismo a diferenciar mejor los colores.
+
+Además, en la última década, ha habido avances significativos en la tecnología de la visión artificial que permiten a los investigadores desarrollar algoritmos de procesamiento de imágenes que mejoran la capacidad de las personas con daltonismo para distinguir los colores. Estos algoritmos se basan en modelos matemáticos que simulan el funcionamiento del ojo humano para ajustar los colores en tiempo real y mejorar la percepción visual de los colores.
+
+{{< hint info >}}
+**Referencias**  
+López, J. M., & Medina, N. M. (2021). Un enfoque para el diseño inclusivo de videojuegos centrado en jugadores daltónicos. Revista de la Asociación Interacción Persona Ordenador (AIPO), 2(1), 25-37.
+
+Albrecht, M. (2010). Color blindness. Nat. Methods, 7(775), 10-1038.
+
+Sharpe, L. T., & Jägle, H. (2001). I used to be color blind. Color Research & Application: Endorsed by Inter‐Society Color Council, The Colour Group (Great Britain), Canadian Society for Color, Color Science Association of Japan, Dutch Society for the Study of Color, The Swedish Colour Centre Foundation, Colour Society of Australia, Centre Français de la Couleur, 26(S1), S269-S272.
 {{< /hint >}}
 
 ## ¿Cómo las personas daltónicas ven los colores?
@@ -199,7 +216,7 @@ let newB = 0.0 * r + 0.475 * g + 0.525 * b;
 
 ## Filtro Correctivo
 
-Lamentablemente, no pudimos implementar el código en p5 para corregir el daltonismo en imágenes debido a su gran complejidad. El proceso requerido para corregir el daltonismo implica una serie de transformaciones de color que son muy complicadas de realizar en tiempo real y en una plataforma de programación como p5.
+Lamentablemente, no pudimos implementar el código en `p5` para corregir el daltonismo en imágenes debido a su gran complejidad. El proceso requerido para corregir el daltonismo implica una serie de transformaciones de color que son muy complicadas de realizar en tiempo real y en una plataforma de programación como `p5`.
 
 Sin embargo, no nos dimos por vencidos y buscamos una solución alternativa. Descubrimos que `Windows` tiene un filtro incorporado que puede ayudar a corregir el daltonismo en las imágenes. Aunque esta solución no es tan completa como la que habíamos esperado inicialmente, nos permitió dar un vistazo de cómo serían las imágenes corregidas y entender mejor el proceso de corrección del daltonismo.
 
@@ -230,3 +247,20 @@ A continuación, presentamos las comparativas entre la imagen original y los fil
     <img src="/showcase/sketches/colorBlindFilter/imagenBase.jpg" />
     <img src="/showcase/sketches/colorBlindFilter/filtroTritanopia.png" />
 </div>
+
+## Conclusiones
+
+El código que hemos desarrollado en `p5` para simular los distintos tipos de daltonismo es una herramienta útil para comprender mejor la experiencia visual de las personas con daltonismo y para crear conciencia sobre las dificultades que enfrentan en su vida cotidiana.
+
+Sin embargo, es importante tener en cuenta que aunque pudimos simular con éxito los distintos tipos de daltonismo, no pudimos desarrollar un filtro correctivo debido a su complejidad. El proceso de corrección de la percepción del color de las personas con daltonismo es muy complejo y depende de muchos factores individuales, lo que lo hace difícil de abordar con una solución única.
+
+Esperamos que este código sirva como un primer paso en la comprensión de la complejidad del daltonismo y de la importancia de desarrollar soluciones para mejorar la experiencia visual de las personas que padecen esta condición. Además, animamos a otros programadores y desarrolladores a seguir investigando y explorando soluciones innovadoras para ayudar a las personas con daltonismo.
+
+## Trabajo Futuro
+El trabajo futuro en el campo de la corrección del daltonismo es amplio y prometedor. Aunque aún no existe una solución completa y definitiva para corregir la percepción del color de las personas con daltonismo, hay muchas investigaciones en curso y posibles soluciones en el horizonte.
+
+Una posible dirección para futuros trabajos es el uso de la tecnología con ayuda de la inteligencia artificial para desarrollar algoritmos de procesamiento de imágenes más avanzados y precisos. Estos algoritmos podrían aprender y adaptarse a las necesidades individuales de cada persona con daltonismo y ajustar los colores en tiempo real para mejorar su percepción visual del mundo.
+
+Otra área de investigación prometedora es el desarrollo de lentes de contacto con filtros de color personalizados que se adapten a las necesidades individuales de cada persona con daltonismo. A medida que la tecnología de los materiales y la fabricación se vuelve más avanzada, es posible que se puedan producir lentes de contacto más personalizados y precisos que ofrezcan una solución de corrección más efectiva.
+
+Además, la educación y la conciencia pública sobre el daltonismo y las dificultades que enfrentan las personas que lo padecen también son importantes para promover una mayor comprensión y empatía hacia esta condición. Los diseñadores gráficos y de productos pueden ser más conscientes de las limitaciones del daltonismo y hacer ajustes en sus diseños para garantizar una accesibilidad más amplia para todos.
