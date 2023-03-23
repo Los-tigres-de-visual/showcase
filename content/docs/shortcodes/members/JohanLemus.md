@@ -30,4 +30,4 @@ Estas son algunas de las redes que utilizo profesionalmente:
 * [Mi perfil](https://github.com/Johan15111)
 
 ### HackerRank
-* [Mi perfil](https://www.hackerrank.com/johanlemus1511?hr_r=1)
+* [Mi perfil](https://www.hackerrank.com/johanlemus1511?hr_r=1).

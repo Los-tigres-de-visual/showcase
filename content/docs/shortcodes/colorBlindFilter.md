@@ -256,7 +256,7 @@ Sin embargo, es importante tener en cuenta que aunque pudimos simular con éxito
 
 Esperamos que este código sirva como un primer paso en la comprensión de la complejidad del daltonismo y de la importancia de desarrollar soluciones para mejorar la experiencia visual de las personas que padecen esta condición. Además, animamos a otros programadores y desarrolladores a seguir investigando y explorando soluciones innovadoras para ayudar a las personas con daltonismo.
 
-## Trabajo Futuro
+## Trabajo futuro
 El trabajo futuro en el campo de la corrección del daltonismo es amplio y prometedor. Aunque aún no existe una solución completa y definitiva para corregir la percepción del color de las personas con daltonismo, hay muchas investigaciones en curso y posibles soluciones en el horizonte.
 
 Una posible dirección para futuros trabajos es el uso de la tecnología con ayuda de la inteligencia artificial para desarrollar algoritmos de procesamiento de imágenes más avanzados y precisos. Estos algoritmos podrían aprender y adaptarse a las necesidades individuales de cada persona con daltonismo y ajustar los colores en tiempo real para mejorar su percepción visual del mundo.
