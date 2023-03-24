@@ -1,6 +1,8 @@
-# Los modelos de color
+# Introducción: Los modelos de color
 
 Se trata de modelos usados para describir y definir colores al desintegrarlos en componentes diferentes representados usualmente por tuplas de  números. Las diferentes combinaciones de valores en dichas tuplas corresponden a colores específicos. Existen distintos modelos que trabajan sobre diferentes componentes del color y que se usan en diferentes aplicaciones. 
+
+# Antecedentes
 
 ## RGB
 
@@ -680,7 +682,7 @@ function hsbf(){
 }
 {{< /p5-global-iframe >}}
 
-## Conclusiones
+## Conclusiones y trabajo futuro
 
 Los modelos de color son variados y permiten estudiar el color desde distintas características, según la necesidad y el área en la que se apliquen. A pesar de sus diferencias siempre es posible pasar de un modelo a otro por lo general con muy buena exactitud, y evaluar el mismo color desde diferentes componentes. Además los colores complementarios, análogos y la triada de color son combinaciones útiles en el diseño no es difícil obtenerlos a partir de un color dado.
 
