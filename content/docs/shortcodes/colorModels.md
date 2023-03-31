@@ -2,7 +2,7 @@
 
 Se trata de modelos usados para describir y definir colores al desintegrarlos en componentes diferentes representados usualmente por tuplas de  números. Las diferentes combinaciones de valores en dichas tuplas corresponden a colores específicos. Existen distintos modelos que trabajan sobre diferentes componentes del color y que se usan en diferentes aplicaciones. 
 
-# Antecedentes
+# Antecedentes:
 
 ## RGB
 
@@ -685,19 +685,22 @@ function hsbf(){
 {{< details "Código" close >}}
 {{< highlight js >}}
 //Conversión modelos de color Santiago Rodríguez Camargo
-  let type="rgb"
+let type="rgb" //modelo actual
 function setup() {
   createCanvas(520, 400);
   
+  //sliders
   rslider= createSlider(0,1,0,0.01);
   gslider= createSlider(0,1,0,0.01);
   bslider= createSlider(0,1,0,0.01);
   
+  //cambio de canal
   hslb=createButton("HSL")
   hslb.position(175,40)
   
   hsbb=createButton("HSB")
   hsbb.position(275,40)
+  
   let r=0,g=0,b=0;
   let h=0,s=0,l=0;
   let H=0,S=0,B=0;
@@ -711,122 +714,125 @@ function draw() {
   colorMode(RGB,1)
   background(0.5);
   
+  //canal RGB
   if(type==="rgb"){
     fill(rslider.value(),gslider.value(),bslider.value())
+    
+    //componentes
     circle(200,210,190);
     fill('white')
-  text('r:'+rslider.value(),50,395)
-  text('g:'+gslider.value(),190,395)
-  text('b:'+bslider.value(),320,395)
-  text('Complementario',8,150)
-  text('Principal',175,100)
+    text('r:'+rslider.value(),50,395)
+    text('g:'+gslider.value(),190,395)
+    text('b:'+bslider.value(),320,395)
+    text('Complementario',8,150)
+    text('Principal',175,100)
     
     //cálculo complementario
     fill(1-rslider.value(),1-gslider.value(),1-bslider.value())
     circle(50,210,80);
     
-  let rgba=[rslider.value(),gslider.value(),bslider.value()]
-  let hsl=rgbToHSL(rgba)
-  h=hsl[0]
-  s=hsl[1]
-  l=hsl[2]
-  
-  let hsb=rgbToHSB(rgba)
-  H=hsb[0]
-  S=hsb[1]
-  B=hsb[2]
+    let rgba=[rslider.value(),gslider.value(),bslider.value()]
+    let hsl=rgbToHSL(rgba) //cálculo a HSL
+    h=hsl[0]
+    s=hsl[1]
+    l=hsl[2]
+    
+    let hsb=rgbToHSB(rgba) //cálculo a HSB
+    H=hsb[0]
+    S=hsb[1]
+    B=hsb[2]
   }
+  //canal HSL
   else if (type==="HSL"){
     fill('hsl('+Math.round(hs.value())+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
     circle(200,210,190);
     
+    //componenetes
     fill('white')
-  text('h:'+Math.round(hs.value()),50,395)
-  text('s:'+Math.round(ss.value()*100)+'%',190,395)
-  text('l:'+Math.round(ls.value()*100)+'%',320,395)
-  text('Complementario',8,150)
-  text('Principal',175,100)
-  text('Triada',435,100)
-  text('Análogos',325,100)
+    text('h:'+Math.round(hs.value()),50,395)
+    text('s:'+Math.round(ss.value()*100)+'%',190,395)
+    text('l:'+Math.round(ls.value()*100)+'%',320,395)
+    text('Complementario',8,150)
+    text('Principal',175,100)
+    text('Triada',435,100)
+    text('Análogos',325,100)
     
-    //complement
+    //complemento
    fill('hsl('+(Math.round(hs.value())+180)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
     circle(50,210,80);
     
-    //analogous
+    //análogos
     fill('hsl('+(Math.round(hs.value())+30)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
     circle(350,160,80);
     
     fill('hsl('+(Math.round(hs.value())+330)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
     circle(350,250,80);
     
-    //triad
+    //triada
     fill('hsl('+(Math.round(hs.value())+120)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
     circle(450,160,80);
     
     fill('hsl('+(Math.round(hs.value())+240)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
     circle(450,250,80);
     
-    
-    
-  let hsla=[hs.value(),ss.value(),ls.value()]
-  let rgb=HSLtorgb(hsla)
-  r=rgb[0]
-  g=rgb[1]
-  b=rgb[2]
-    
-  let hsb=HSLToHSB(hsla)
-  H=hsb[0]
-  S=hsb[1]
-  B=hsb[2]
-  
+    let hsla=[hs.value(),ss.value(),ls.value()]
+    let rgb=HSLtorgb(hsla) //cálculo a RGB
+    r=rgb[0]
+    g=rgb[1]
+    b=rgb[2]
+      
+    let hsb=HSLToHSB(hsla) //cálculo a HSB
+    H=hsb[0]
+    S=hsb[1]
+    B=hsb[2]
   }
+  //canal HSL
   else if (type==="HSB"){
     fill('hsb('+Math.round(Hslider.value())+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
     circle(200,210,190);
     
+    //Componentes
     fill('white')
-  text('h:'+Math.round(Hslider.value()),50,395)
-  text('s:'+Math.round(Sslider.value()*100)+'%',190,395)
-  text('b:'+Math.round(Bslider.value()*100)+'%',320,395)
-  text('Complementario',8,150)
-  text('Principal',175,100)
-  text('Triada',435,100)
-  text('Análogos',325,100)
+    text('h:'+Math.round(Hslider.value()),50,395)
+    text('s:'+Math.round(Sslider.value()*100)+'%',190,395)
+    text('b:'+Math.round(Bslider.value()*100)+'%',320,395)
+    text('Complementario',8,150)
+    text('Principal',175,100)
+    text('Triada',435,100)
+    text('Análogos',325,100)
     
-    //complement
+    //complemento
     fill('hsb('+(Math.round(Hslider.value())+180)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
     circle(50,210,80);
     
-    //triad
+    //triada
     fill('hsb('+(Math.round(Hslider.value())+120)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
     circle(450,160,80);
     
     fill('hsb('+(Math.round(Hslider.value())+240)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
     circle(450,250,80);
     
-    //analogous
+    //análogos
     fill('hsb('+(Math.round(Hslider.value())+30)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
     circle(350,160,80);
     
     fill('hsb('+(Math.round(Hslider.value())+330)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
     circle(350,250,80);
   
-  let hsba=[Hslider.value(),Sslider.value(),Bslider.value()]
-  let rgb=HSBTorgb(hsba)
-  r=rgb[0]
-  g=rgb[1]
-  b=rgb[2]
-  
-  let hsl=HSBToHSL(hsba)
-  h=hsl[0]
-  s=hsl[1]
-  l=hsl[2]
+    let hsba=[Hslider.value(),Sslider.value(),Bslider.value()]
+    let rgb=HSBTorgb(hsba) //cálculo a RGB
+    r=rgb[0]
+    g=rgb[1]
+    b=rgb[2]
+    
+    let hsl=HSBToHSL(hsba) //cálculo a HSL
+    h=hsl[0]
+    s=hsl[1]
+    l=hsl[2]
   }
 }
 
-
-
+//Conversión RGB a HSL
 function rgbToHSL(rgba){
   let min=1
   let max=0
@@ -870,7 +876,10 @@ function rgbToHSL(rgba){
   return hsl
 }
 
+//Conversión HSL a RGB
 function HSLtorgb(hslarray){
+
+  //cálculo valores intermedios
   let C=(1-Math.abs(2*hslarray[2]-1))*hslarray[1]
   let X=C*(1-Math.abs(((((hslarray[0]/60)%2)+2)%2)-1))
   let m=hslarray[2]-C/2
@@ -879,6 +888,7 @@ function HSLtorgb(hslarray){
   let g_
   let b_
   
+  //grados
   if (hslarray[0]<60){
     r_=C
     g_=X
@@ -904,14 +914,17 @@ function HSLtorgb(hslarray){
     g_=0
     b_=X 
   }
+  //cálculo valores definitivos
   let rgbarray=[Math.round((r_+m)*100)/100,Math.round((g_+m)*100)/100,Math.round((b_+m)*100)/100]
   return rgbarray
 }
 
+//Conversión RGB a HSB
 function rgbToHSB(rgba){
   let min=1
   let max=0
   
+  //cálculo min max
   for (var c=0;c<rgba.length;c++){
     if (rgba[c] > max){
       max=rgba[c]
@@ -947,6 +960,7 @@ function rgbToHSB(rgba){
   return hsb
 }
 
+//Conversión HSB a RGB
 function HSBTorgb(hsbarray){
   
   //variables intermedias
@@ -991,6 +1005,7 @@ function HSBTorgb(hsbarray){
   return rgbarray
 }
 
+//Conversión HSL a HSB
 function HSLToHSB(hslarray){
   //h
   H=hslarray[0]
@@ -1010,21 +1025,27 @@ function HSLToHSB(hslarray){
   return hsb
 }
 
+//Conversión HSB a HSL
 function HSBToHSL(hsbarray){
+  //h
   h=hsbarray[0]
+  //l
   l=hsbarray[2]*(1-(hsbarray[1]/2))
+  //s
   if (l==0 || l==1){
     s=0
   } else{
     s=(hsbarray[2]-l)/Math.min(l,1-l)
   }
   
+  //redondeo
   let hsl=[Math.round(h * 100) / 100,Math.round(s * 100) / 100,Math.round(l * 100) / 100]
   return hsl
 }
 
+//cambio de canal a HSL
 function hslf(){
-  removeElements()
+  removeElements()//se borran los elementos del canvas para volver a crearlos con los valores nuevos
   type="HSL"
   rgbb=createButton("RGB")
   rgbb.position(75,40)
@@ -1033,36 +1054,42 @@ function hslf(){
   
   hsbb.mousePressed(hsbf)
   rgbb.mousePressed(rgbf)
+  //sliders
   hs= createSlider(0,360,h,0.1);
   ss= createSlider(0,1,s,0.01);
   ls= createSlider(0,1,l,0.01);
 }
 
+//cambio de canal a RGB
 function rgbf(){
-  removeElements()
+  removeElements()//se borran los elementos del canvas para volver a crearlos con los valores nuevos
   type="rgb"
-  
   hslb=createButton("HSL")
   hslb.position(175,40)
   hsbb=createButton("HSB")
   hsbb.position(275,40)
+
   hslb.mousePressed(hslf)
   hsbb.mousePressed(hsbf)
+  //sliders
   rslider= createSlider(0,1,r,0.01);
   gslider= createSlider(0,1,g,0.01);
   bslider= createSlider(0,1,b,0.01);
 }
 
+//cambio de canal a HSB
 function hsbf(){
-  removeElements()
+  removeElements()//se borran los elementos del canvas para volver a crearlos con los valores nuevos
   type="HSB"
   
   hslb=createButton("HSL")
   hslb.position(175,40)
   rgbb=createButton("RGB")
   rgbb.position(75,40)
+
   hslb.mousePressed(hslf)
   rgbb.mousePressed(rgbf)
+  //sliders
   Hslider= createSlider(0,360,H,0.1);
   Sslider= createSlider(0,1,S,0.01);
   Bslider= createSlider(0,1,B,0.01);
@@ -1072,6 +1099,12 @@ function hsbf(){
 
 ## Conclusiones y trabajo futuro
 
-Los modelos de color son variados y permiten estudiar el color desde distintas características, según la necesidad y el área en la que se apliquen. A pesar de sus diferencias siempre es posible pasar de un modelo a otro por lo general con muy buena exactitud, y evaluar el mismo color desde diferentes componentes. Además los colores complementarios, análogos y la triada de color son combinaciones útiles en el diseño no es difícil obtenerlos a partir de un color dado.
+Los modelos de color son variados y permiten estudiar el color desde distintas características, según la necesidad y el área en la que se apliquen. A pesar de sus diferencias siempre es posible pasar de un modelo a otro por lo general con muy buena exactitud, y evaluar el mismo color desde diferentes componentes. Además los colores complementarios, análogos y la triada de color son combinaciones útiles en el diseño y no es difícil obtenerlos a partir de un color dado.
 
-A futuro se podría trabajar sobre más modelos o realizar las transformaciones de manera gráfica para que sean fáciles de visualizar y aporten al entendimiento de los modelos de color.
+Existen diferentes formas de definir y calcular los colores complementarios, por lo que diferentes métodos pueden arrojar colores complementarios diferentes. La rueda de color o círculo cromático permite calcular estos colores adicionales con facilidad valiéndose de ángulos.
+
+A futuro se podría trabajar sobre más modelos o realizar las transformaciones de manera gráfica para que sean fáciles de visualizar y aporten al entendimiento de los modelos de color y sus características.
+
+La documentación sobre los modelos, sus diferencias y equivalencias a veces es contradictoria, por lo que es fácil confundir los conceptos y procedimientos. Sería favorable contar con claridad y estándares y delimiten muy bien este tema, haciéndolo más fácil de abordar y entender.
+
+Finalmente sería interesante agregar nuevas características al programa para hacerlo más rico, como la posibilidad de utilizar colores aleatorios, de capturar colores con cuenta gotas o combinar colores.
