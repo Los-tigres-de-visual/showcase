@@ -1,10 +1,12 @@
-# Introducción: Los modelos de color
+#  Los modelos de color
+
+## Introducción:
 
 Se trata de modelos usados para describir y definir colores al desintegrarlos en componentes diferentes representados usualmente por tuplas de  números. Las diferentes combinaciones de valores en dichas tuplas corresponden a colores específicos. Existen distintos modelos que trabajan sobre diferentes componentes del color y que se usan en diferentes aplicaciones. 
 
-# Antecedentes:
+## Antecedentes:
 
-## RGB
+### RGB
 
 Es quizá el modelo de color más conocido y se usa especialmente para representar colores en medios digitales. La tupla de este modelo está compuesta por tres valores cada uno entre 0 y 255 (o 0 y 1 después de normalizarlos) y corresponden a los tres colores primarios de la luz rojo, verde y azul (**R**ed, **G**reen, **B**lue de donde viene su nombre). El valor de cada componente se refiere a la “cantidad” o intensidad de dicho color, por lo que la combinación de diferentes intensidades de rojo, verde y azul es lo que genera todos los demás colores del espectro. La combinación de los tres colores al máximo (255, 255, 255) representa el color blanco, mientras que la ausencia total de estos (0,0,0) representa el negro.
 
@@ -15,7 +17,7 @@ El modelo rgb se suele representar por medio de un cubo construido a partir de u
 [Referencia](http://www.ece.northwestern.edu/local-apps/matlabhelp/toolbox/images/color5.html)
 {{< /hint >}}
 
-## HSL
+### HSL
 Se trata de un modelo usado principalmente en diseño gráfico y en edición de imagen. Surgió bajo la idea de representar el color separándolo en componentes que los humanos más fácilmente asocian como atributos del color. La tupla entonces tiene tres valores: matiz, saturación y luminosidad  o en inglés Hue, Saturation, Lightness (HSL). El matiz se refiere al color puro o tono que nos permite a simple vista diferenciar un color de otro. Si miramos el círculo cromático decimos que el matiz corresponde al punto del círculo en el que estamos; es por esto que su valor usualmente corresponde a los grados de un arco en un círculo ( es decir que toma valores entre 0° y 360°). Tradicionalmente 0° corresponde al rojo puro, 120° corresponde al verde puro y 240° al azul puro (desde ya podemos ver algunas ideas que relacionan al rgb con el hsl)
 
 ![color wheel](/showcase/sketches/colorModels/colorwheel.webp)
@@ -31,7 +33,7 @@ El modelo HSL se suele representar como un cilindro, en el que la altura es la l
 
 ![hsl cilinder](/showcase/sketches/colorModels/hsl.PNG)
 
-## HSB
+### HSB
 
 HSB (Hue, Saturation, Brigthness) o mejor conocido como HSV (Hue, Saturation, Value) es otro modelo de color muy similar a HSL, con la principal diferencia en el último valor de la tupla. En general H y S significan lo mismo que en el modelo anterior (aunque esto no quiere decir que sus valores sean equivalentes siempre), mientras que en HSB el último valor corresponde a la luz que brilla sobre el color; se entiende como la cantidad de luz proyectada sobre el color puro, por lo que en este modelo el 0% corresponde a negro como antes pero 100% corresponde al color puro, o al color completamente iluminado, y no al blanco. 
 
@@ -43,7 +45,7 @@ Por lo anterior, la representación del HSB es también un cilindro, pero con la
 [Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
 {{< /hint >}}
 
-## Conversión
+### Conversión
 
 A pesar de que estos modelos sean diferentes y a veces no fácilmente comparables, al tratarse de modelos matemáticos, no debe sorprender que sea posible pasar de uno a otro mediante fórmulas matemáticas, y por ende obtener un mismo color de forma exacta en diferentes modelos.
 
@@ -59,7 +61,7 @@ En la imagen podemos ver que en las esquinas del cubo de RGB se ubican los color
 
 Aquí hay un par de videos que ilustran la transformación:
 
-## RGB a HSL
+### RGB a HSL
 <iframe
     width="640"
     height="480"
@@ -70,7 +72,7 @@ Aquí hay un par de videos que ilustran la transformación:
 >
 </iframe>
 
-## RGB a HSB
+### RGB a HSB
 
 <iframe
     width="640"
@@ -86,7 +88,7 @@ Aquí hay un par de videos que ilustran la transformación:
 [Referencia](https://en.wikipedia.org/wiki/HSL_and_HSV)
 {{< /hint >}}
 
-## Color complementario, triada y análogos
+### Color complementario, triada y análogos
 
 En teoría del color se habla de conjuntos de colores que trabajan bien juntos y se combinan de tal forma que apelan al usuario. Algunas de estas combinaciones son los colores complementarios, la triada de un color y los colores análogos. Partimos del círculo cromático y nos situamos en un color. El color complementario de nuestro color principal será el que se encuentra completamente al otro lado del círculo, es decir a 180°. La combinación de estos dos colores debe dar como resultado el color neutro. En cambio si partiendo de nuestro color original nos desplazamos por el círculo 120° encontraremos nuestro primer color de la triada, y al movernos 120° de nuevo (240° desde el origen) encontraremos el segundo. Estos dos colores junto con el original describen un triángulo equilátero en el círculo. Finalmente, los colores análogos son aquellos continuos al color original, por lo que basta desplazarnos unos 30° en ambas direcciones del círculo para hallarlos y tener un gama más bien cercana de tonos.
 
@@ -98,7 +100,7 @@ Estas combinaciones de colores son muy utilizadas en diseño y se tiende a usarl
 [Referencia](https://nolich.com/psicologia-del-color-en-el-cine/)
 {{< /hint >}}
 
-# Implementación
+## Implementación:
 
 En el siguiente ejercicio representamos los conceptos e ideas anteriormente de forma que partimos de un color *principal* en el modelo **rgb** que puede ser construido modificando sus tres componentes (r, g ,b) por medio de deslizadores. El color se actualiza en tiempo real. En cualquier momento podemos seleccionar una de las opciones en la parte superior para cambiar el modelo de color, lo que ocasionará que a partir de los valores del modelo actual se realicen cálculos matemáticos para encontrar los valores de los componentes del nuevo modelo que producen el mismo color. El cambio se refleja en los deslizadores, que ahora describirán los componentes del nuevo modelo y que tomarán los valores que corresponden al color seleccionado.
 El programa permite cambiar entre RGB, HSL y HSB en cualquier orden para explorar las equivalencias entre ellos.
@@ -236,7 +238,7 @@ La mayoría de ecuaciones se obtuvieron de esta [página](https://www.rapidtable
 
 Como se puede observar, el programa además muestra el color complementario, la triada y los análogos del color principal todo el tiempo, y estos también se calculan y actualizan en tiempo real a medida que jugamos con el color principal.
 
-## Complementario
+### Complementario
 
 Dentro de la investigación se encontraron dos formas de calcular el color complementario por un lado en rgb y por otro en HSL/HSB.
 
@@ -260,7 +262,7 @@ La segunda forma consiste en desplazarnos 180° en el círculo cromático para e
 En este programa se usaron ambas técnicas, por lo que en cada modelo se utiliza el método correspondiente. Nótese que estos no son 100% equivalentes pues al cambiar entre rgb y cualquiera de los otros dos modelos podemos ver cambios en el color complementario, siendo la diferencia más o menos drástica dependiendo del color.
 {{< /hint >}}
 
-## Análogos
+### Análogos
 
 Para el cálculo de análogos nos basamos en el círculo cromático y nos desplazamos 30° a lado y lado del color principal para hallarlos. En HSL/HSB esto se hace sobre el valor del matiz.
 
@@ -277,7 +279,7 @@ Para el cálculo de análogos nos basamos en el círculo cromático y nos despla
 Nótese la similitud de los análogos y el color principal por su cercanía en el circulo cromático
 {{< /hint >}}
 
-## Triada de color
+### Triada de color
 
 Finalmente encontramos la triada de color seleccionando los dos colores que sean equidistantes entre sí y con el color principal sobre el círculo cromático. Puesto que el círculo tiene 360°, basta con aumentar el matiz en pasos de 120° para hallarlos.
 
