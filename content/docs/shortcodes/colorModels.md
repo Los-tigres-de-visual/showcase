@@ -682,6 +682,394 @@ function hsbf(){
 }
 {{< /p5-global-iframe >}}
 
+{{< details "Código" close >}}
+{{< highlight js >}}
+//Conversión modelos de color Santiago Rodríguez Camargo
+  let type="rgb"
+function setup() {
+  createCanvas(520, 400);
+  
+  rslider= createSlider(0,1,0,0.01);
+  gslider= createSlider(0,1,0,0.01);
+  bslider= createSlider(0,1,0,0.01);
+  
+  hslb=createButton("HSL")
+  hslb.position(175,40)
+  
+  hsbb=createButton("HSB")
+  hsbb.position(275,40)
+  let r=0,g=0,b=0;
+  let h=0,s=0,l=0;
+  let H=0,S=0,B=0;
+  hslb.mousePressed(hslf)
+  hsbb.mousePressed(hsbf)
+  
+  
+}
+
+function draw() {
+  colorMode(RGB,1)
+  background(0.5);
+  
+  if(type==="rgb"){
+    fill(rslider.value(),gslider.value(),bslider.value())
+    circle(200,210,190);
+    fill('white')
+  text('r:'+rslider.value(),50,395)
+  text('g:'+gslider.value(),190,395)
+  text('b:'+bslider.value(),320,395)
+  text('Complementario',8,150)
+  text('Principal',175,100)
+    
+    //cálculo complementario
+    fill(1-rslider.value(),1-gslider.value(),1-bslider.value())
+    circle(50,210,80);
+    
+  let rgba=[rslider.value(),gslider.value(),bslider.value()]
+  let hsl=rgbToHSL(rgba)
+  h=hsl[0]
+  s=hsl[1]
+  l=hsl[2]
+  
+  let hsb=rgbToHSB(rgba)
+  H=hsb[0]
+  S=hsb[1]
+  B=hsb[2]
+  }
+  else if (type==="HSL"){
+    fill('hsl('+Math.round(hs.value())+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(200,210,190);
+    
+    fill('white')
+  text('h:'+Math.round(hs.value()),50,395)
+  text('s:'+Math.round(ss.value()*100)+'%',190,395)
+  text('l:'+Math.round(ls.value()*100)+'%',320,395)
+  text('Complementario',8,150)
+  text('Principal',175,100)
+  text('Triada',435,100)
+  text('Análogos',325,100)
+    
+    //complement
+   fill('hsl('+(Math.round(hs.value())+180)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(50,210,80);
+    
+    //analogous
+    fill('hsl('+(Math.round(hs.value())+30)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(350,160,80);
+    
+    fill('hsl('+(Math.round(hs.value())+330)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(350,250,80);
+    
+    //triad
+    fill('hsl('+(Math.round(hs.value())+120)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(450,160,80);
+    
+    fill('hsl('+(Math.round(hs.value())+240)%360+','+Math.round(ss.value()*100)+'%,'+Math.round(ls.value()*100)+'%)')
+    circle(450,250,80);
+    
+    
+    
+  let hsla=[hs.value(),ss.value(),ls.value()]
+  let rgb=HSLtorgb(hsla)
+  r=rgb[0]
+  g=rgb[1]
+  b=rgb[2]
+    
+  let hsb=HSLToHSB(hsla)
+  H=hsb[0]
+  S=hsb[1]
+  B=hsb[2]
+  
+  }
+  else if (type==="HSB"){
+    fill('hsb('+Math.round(Hslider.value())+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
+    circle(200,210,190);
+    
+    fill('white')
+  text('h:'+Math.round(Hslider.value()),50,395)
+  text('s:'+Math.round(Sslider.value()*100)+'%',190,395)
+  text('b:'+Math.round(Bslider.value()*100)+'%',320,395)
+  text('Complementario',8,150)
+  text('Principal',175,100)
+  text('Triada',435,100)
+  text('Análogos',325,100)
+    
+    //complement
+    fill('hsb('+(Math.round(Hslider.value())+180)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
+    circle(50,210,80);
+    
+    //triad
+    fill('hsb('+(Math.round(Hslider.value())+120)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
+    circle(450,160,80);
+    
+    fill('hsb('+(Math.round(Hslider.value())+240)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
+    circle(450,250,80);
+    
+    //analogous
+    fill('hsb('+(Math.round(Hslider.value())+30)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
+    circle(350,160,80);
+    
+    fill('hsb('+(Math.round(Hslider.value())+330)%360+','+Math.round(Sslider.value()*100)+'%,'+Math.round(Bslider.value()*100)+'%)')
+    circle(350,250,80);
+  
+  let hsba=[Hslider.value(),Sslider.value(),Bslider.value()]
+  let rgb=HSBTorgb(hsba)
+  r=rgb[0]
+  g=rgb[1]
+  b=rgb[2]
+  
+  let hsl=HSBToHSL(hsba)
+  h=hsl[0]
+  s=hsl[1]
+  l=hsl[2]
+  }
+}
+
+
+
+function rgbToHSL(rgba){
+  let min=1
+  let max=0
+  
+  //cálculo min max
+  for (var c=0;c<rgba.length;c++){
+    if (rgba[c] > max){
+      max=rgba[c]
+    }
+    if (rgba[c] < min){
+      min=rgba[c]
+    }
+  }
+  
+  //h
+  if (min==max){
+    h=0
+  }
+  else if(max==rgba[0]){
+    h=60*(((((rgba[1]-rgba[2])/(max-min))%6)+6)%6)}
+  else if(max==rgba[1]){
+    h=60*(((rgba[2]-rgba[0])/(max-min))+2)}
+  else if(max==rgba[2]){
+    h=60*(((rgba[0]-rgba[1])/(max-min))+4)}
+
+  //l
+  l=(max+min)/2
+  
+  //s
+  if (min==max){
+    s=0
+  }
+  else if (l<=1/2){
+    s=(max-min)/(2*l)
+  }
+  else if (l>1/2){
+    s=(max-min)/(2-2*l)
+  }
+   
+  let hsl=[Math.round(h * 100) / 100,Math.round(s * 100) / 100,Math.round(l * 100) / 100]
+  return hsl
+}
+
+function HSLtorgb(hslarray){
+  let C=(1-Math.abs(2*hslarray[2]-1))*hslarray[1]
+  let X=C*(1-Math.abs(((((hslarray[0]/60)%2)+2)%2)-1))
+  let m=hslarray[2]-C/2
+  
+  let r_
+  let g_
+  let b_
+  
+  if (hslarray[0]<60){
+    r_=C
+    g_=X
+    b_=0  
+  } else if(60<= hslarray[0] && hslarray[0]<120){
+    r_=X
+    g_=C
+    b_=0 
+  } else if(120<= hslarray[0] && hslarray[0]<180){
+    r_=0
+    g_=C
+    b_=X 
+  }else if(180<= hslarray[0] && hslarray[0]<240){
+    r_=0
+    g_=X
+    b_=C 
+  }else if(240<= hslarray[0] && hslarray[0]<300){
+    r_=X
+    g_=0
+    b_=C 
+  }else if(300<= hslarray[0] && hslarray[0]<360){
+    r_=C
+    g_=0
+    b_=X 
+  }
+  let rgbarray=[Math.round((r_+m)*100)/100,Math.round((g_+m)*100)/100,Math.round((b_+m)*100)/100]
+  return rgbarray
+}
+
+function rgbToHSB(rgba){
+  let min=1
+  let max=0
+  
+  for (var c=0;c<rgba.length;c++){
+    if (rgba[c] > max){
+      max=rgba[c]
+    }
+    if (rgba[c] < min){
+      min=rgba[c]
+    }
+  }
+  
+  //H
+  if (min==max){
+    H=0
+  }
+  else if(max==rgba[0]){
+    H=60*(((((rgba[1]-rgba[2])/(max-min))%6)+6)%6)}
+  else if(max==rgba[1]){
+    H=60*(((rgba[2]-rgba[0])/(max-min))+2)}
+  else if(max==rgba[2]){
+    H=60*(((rgba[0]-rgba[1])/(max-min))+4)}
+  
+  //S
+  if (max==0){
+    S=0
+  }else{
+    S=(max-min)/max
+  }
+  
+  //B
+  B=max
+  
+  let hsb=[Math.round(H * 100) / 100,Math.round(S * 100) / 100,Math.round(B * 100) / 100]
+  
+  return hsb
+}
+
+function HSBTorgb(hsbarray){
+  
+  //variables intermedias
+  let C=hsbarray[1]*hsbarray[2]
+  let X=C*(1-Math.abs(((((hsbarray[0]/60)%2)+2)%2)-1))
+  let m=hsbarray[2]-C
+  
+  let r_
+  let g_
+  let b_
+  
+  //cálculo r' g' b'
+  if (hsbarray[0]<60){
+    r_=C
+    g_=X
+    b_=0  
+  } else if(60<= hsbarray[0] && hsbarray[0]<120){
+    r_=X
+    g_=C
+    b_=0 
+  } else if(120<= hsbarray[0] && hsbarray[0]<180){
+    r_=0
+    g_=C
+    b_=X 
+  }else if(180<= hsbarray[0] && hsbarray[0]<240){
+    r_=0
+    g_=X
+    b_=C 
+  }else if(240<= hsbarray[0] && hsbarray[0]<300){
+    r_=X
+    g_=0
+    b_=C 
+  }else if(300<= hsbarray[0] && hsbarray[0]<360){
+    r_=C
+    g_=0
+    b_=X 
+  }
+  
+  //cálculo y redondo de r g b
+  let rgbarray=[Math.round((r_+m)*100)/100,Math.round((g_+m)*100)/100,Math.round((b_+m)*100)/100]
+  
+  return rgbarray
+}
+
+function HSLToHSB(hslarray){
+  //h
+  H=hslarray[0]
+  
+  //b
+  B=hslarray[2]+hslarray[1]*Math.min(hslarray[2],1-hslarray[2])
+  
+  //s
+  if (B==0){
+    S=0
+  } else{
+    S=2*(1-hslarray[2]/B)
+  }
+  
+  //redondeo
+  let hsb=[Math.round(H * 100) / 100,Math.round(S * 100) / 100,Math.round(B * 100) / 100]
+  return hsb
+}
+
+function HSBToHSL(hsbarray){
+  h=hsbarray[0]
+  l=hsbarray[2]*(1-(hsbarray[1]/2))
+  if (l==0 || l==1){
+    s=0
+  } else{
+    s=(hsbarray[2]-l)/Math.min(l,1-l)
+  }
+  
+  let hsl=[Math.round(h * 100) / 100,Math.round(s * 100) / 100,Math.round(l * 100) / 100]
+  return hsl
+}
+
+function hslf(){
+  removeElements()
+  type="HSL"
+  rgbb=createButton("RGB")
+  rgbb.position(75,40)
+  hsbb=createButton("HSB")
+  hsbb.position(275,40)
+  
+  hsbb.mousePressed(hsbf)
+  rgbb.mousePressed(rgbf)
+  hs= createSlider(0,360,h,0.1);
+  ss= createSlider(0,1,s,0.01);
+  ls= createSlider(0,1,l,0.01);
+}
+
+function rgbf(){
+  removeElements()
+  type="rgb"
+  
+  hslb=createButton("HSL")
+  hslb.position(175,40)
+  hsbb=createButton("HSB")
+  hsbb.position(275,40)
+  hslb.mousePressed(hslf)
+  hsbb.mousePressed(hsbf)
+  rslider= createSlider(0,1,r,0.01);
+  gslider= createSlider(0,1,g,0.01);
+  bslider= createSlider(0,1,b,0.01);
+}
+
+function hsbf(){
+  removeElements()
+  type="HSB"
+  
+  hslb=createButton("HSL")
+  hslb.position(175,40)
+  rgbb=createButton("RGB")
+  rgbb.position(75,40)
+  hslb.mousePressed(hslf)
+  rgbb.mousePressed(rgbf)
+  Hslider= createSlider(0,360,H,0.1);
+  Sslider= createSlider(0,1,S,0.01);
+  Bslider= createSlider(0,1,B,0.01);
+}
+{{< /highlight >}}
+{{< /details >}}
+
 ## Conclusiones y trabajo futuro
 
 Los modelos de color son variados y permiten estudiar el color desde distintas características, según la necesidad y el área en la que se apliquen. A pesar de sus diferencias siempre es posible pasar de un modelo a otro por lo general con muy buena exactitud, y evaluar el mismo color desde diferentes componentes. Además los colores complementarios, análogos y la triada de color son combinaciones útiles en el diseño no es difícil obtenerlos a partir de un color dado.
