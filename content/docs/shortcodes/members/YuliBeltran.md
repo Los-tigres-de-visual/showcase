@@ -11,7 +11,7 @@
 {{< columns >}} <!-- begin columns block -->
 # También me encanta el anime
 
-<img src="/showcase/sketches/depthPerception/Konata.png">|<p style="text-align: justify;">
+<img src="/showcase/sketches/depthPerception/Konata.png"><p style="text-align: justify;">
 
 <---> <!-- magic separator, between columns -->
 
