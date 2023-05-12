@@ -3,13 +3,13 @@
 ## Introducción
 La pixelación es una técnica comúnmente utilizada en el procesamiento de imágenes y videos para ocultar detalles o crear efectos visuales específicos. En esta sección, presentamos la implementación de un pixelador en software utilizando `p5.js` y `shaders`.
 
-El objetivo principal de este proyecto es desarrollar un sistema interactivo que permita al usuario seleccionar imágenes y videos de un conjunto de datos fuente previamente definido y aplicarles un efecto de pixelación en tiempo real. Además, se compararán los resultados obtenidos con el enfoque usando coherencia espacial (código que creó el Profesor y compartió en la página del grupo), evaluando las diferencias y las posibles ventajas de cada enfoque.
+El objetivo principal de este proyecto es desarrollar un sistema interactivo que permita al usuario seleccionar imágenes y videos de un conjunto de datos fuente previamente definido y aplicarles un efecto de pixelación en tiempo real.
 
 El proceso de pixelación se lleva a cabo utilizando `shaders`, que son programas que se ejecutan en la tarjeta gráfica y permiten realizar operaciones de procesamiento paralelo en tiempo real. En nuestro caso, hemos utilizado un `shader` personalizado que aplica el efecto de pixelación sin utilizar coherencia espacial. El shader divide la imagen en bloques de píxeles y calcula la posición del fragmento en las coordenadas de textura pixeladas multiplicando y redondeando hacia abajo las coordenadas de textura originales por el tamaño de los píxeles
 
 Además, hemos implementado un mecanismo de ajuste del tamaño de píxel para permitir al usuario controlar el nivel de pixelación deseado. Esto se logra a través de un control deslizante interactivo que ajusta los parámetros del `shader` en tiempo real.
 
-Finalmente, analizaremos los resultados comparando el enfoque de pixelación utilizado en este proyecto con un enfoque alternativo que utiliza coherencia espacial. Se evaluarán las ventajas y desventajas de cada método en términos de calidad visual, rendimiento y eficiencia.
+Finalmente, analizaremos los resultados. Se evaluarán las ventajas y desventajas del método implementado en términos de calidad visual, rendimiento y eficiencia.
 
 ## Antecedentes y Trabajo Previo
 La pixelación es una técnica comúnmente utilizada en el procesamiento de imágenes y videos para ocultar detalles, proteger la privacidad o lograr efectos visuales distintivos. Consiste en dividir una imagen en bloques de píxeles más grandes, lo que resulta en una representación simplificada y de baja resolución de la imagen original. Esta técnica ha sido ampliamente utilizada en diversas aplicaciones, como juegos retro, arte digital y aplicaciones de edición de imágenes.
@@ -174,9 +174,6 @@ function draw() {
 // Precisión de los cálculos de punto flotante
 precision mediump float;
 
-// Variable uniforme para controlar la opción de brillo
-uniform bool lightness;
-
 // Textura de entrada
 uniform sampler2D texture;
 
@@ -194,7 +191,7 @@ void main() {
   vec4 texel = texture2D(texture, p);
   
   // Asignar el color del texel como salida
-  gl_FragColor = lightness ? vec4(vec3(texel), 1.0) : texel;
+  gl_FragColor = vec4(vec3(texel), 1.0);
 }
 
 {{< /highlight >}}
@@ -203,6 +200,30 @@ void main() {
 A continuación, presentamos el `iframe` con el código funcional:
 
 {{< p5-iframe sketch="/showcase/sketches/spatialCoherence/pixelator.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="725" height="525" >}}
+
+{{< hint info >}}
+**Derechos de Autor**  
+Las imágenes y videos fueron tomadas de las siguientes páginas:
+1. **Imagen 1:** https://www.transportal.com.br/noticias/wp-content/uploads/2018/09/Parque-Nacional-de-Banff.jpg
+2. **Imagen 2:** https://cdn.spacetelescope.org/archives/images/wallpaper2/heic2007a.jpg
+3. **Imagen 3:** https://media.traveler.es/photos/61377376c4f3d95786668d8d/master/w_1600,c_limit/120565.jpg
+
+4. **Video 1:** https://www.pexels.com/es-es/video/drone-vista-de-grandes-olas-corriendo-hacia-la-orilla-3571264/
+5. **Video 2:** https://www.youtube.com/watch?v=2IEvEXxQ2og
+6. **Video 3:** https://www.youtube.com/watch?v=qU1-Hi4SERA
+
+{{< /hint >}}
+
+### Explicación del Código
+El código en  `p5` y el `shader` implementan un pixelador de imágenes y videos en tiempo real. El pixelador se encarga de dividir la imagen o el video en pequeños cuadrados de píxeles y reducir su tamaño, creando un efecto de pixelación. El shader es una parte fundamental de este proceso, ya que se encarga de aplicar la transformación visual en cada píxel.
+
+El programa comienza cargando las imágenes y videos que se utilizarán, incluyendo un fragment shader llamado `pixelator.frag` que contiene la lógica para la pixelación. Luego, se configura la interfaz de usuario y se establecen las funciones de manejo de eventos.
+
+El proceso de pixelación ocurre en la función `draw()`, que se ejecuta continuamente en un bucle. Dentro de esta función, se establecen los parámetros del shader, como el tamaño de los píxeles y la textura actual (que puede ser una imagen estática o un video en reproducción). El tamaño de los píxeles se controla mediante un deslizador `pixelSizeSlider` que el usuario puede ajustar. El valor del deslizador se pasa al `shader` como `pixelSize`.
+
+Por otro lado, el `shader` funciona de la siguiente manera:
+
+Comienza por calcular las coordenadas de textura `texcoords2` y divide estas coordenadas por el tamaño de los píxeles `pixelSize` para obtener la posición del píxel en la imagen original. Luego, se obtiene el color del píxel correspondiente en la textura original utilizando la función `texture2D()`. Finalmente, el color resultante se asigna a gl_FragColor, que es el color final del píxel en el fragmento.
 
 ## Conclusiones
 
