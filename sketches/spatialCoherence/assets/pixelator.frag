@@ -1,9 +1,6 @@
 // Precisión de los cálculos de punto flotante
 precision mediump float;
 
-// Variable uniforme para controlar la opción de brillo
-uniform bool lightness;
-
 // Textura de entrada
 uniform sampler2D texture;
 
@@ -21,5 +18,5 @@ void main() {
   vec4 texel = texture2D(texture, p);
   
   // Asignar el color del texel como salida
-  gl_FragColor = lightness ? vec4(vec3(texel), 1.0) : texel;
+  gl_FragColor = vec4(vec3(texel), 1.0);
 }
