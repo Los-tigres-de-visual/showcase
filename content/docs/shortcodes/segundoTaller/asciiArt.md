@@ -9,7 +9,7 @@
     line-height: 0.8em;
     display: block;">
 
-{{< p5-iframe src="index.html" onload="resize(this);" sketch="/showcase/sketches/asciiArt/sketch.js" width="725" height="525" >}}
+{{< p5-iframe src="index.html" onload="resize(this);" sketch="/showcase/sketches/asciiArt/sketch.js" lib1="/showcase/sketches/Depth/style.css" width="725" height="525" >}}
 
 
 </div>

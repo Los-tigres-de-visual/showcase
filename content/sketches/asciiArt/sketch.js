@@ -16,9 +16,9 @@ function setup() {
       const r = f.pixels[pixelIndex];
       const g = f.pixels[pixelIndex + 1];
       const b = f.pixels[pixelIndex + 2];
-      const avg = (r+ g + b) / 3;
+      const avg = (r + g + b) / 3;
       const len = density.length;
-      const charIndex = floor (map(avg, 0,255,len,0));
+      const charIndex = floor(map(avg, 0,255,len,0));
       const charToShow = density.split("")[charIndex];
       row += (charToShow === " " || charToShow === undefined) ? "&nbsp;" : charToShow;    
     }
