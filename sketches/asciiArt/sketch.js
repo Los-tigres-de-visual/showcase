@@ -1,6 +1,6 @@
 let sourceText;
-let poem;
-let gloria;
+let sText;
+let f;
 let startIndex = 0;
 let frameRateEnabled = false;
 
@@ -14,15 +14,15 @@ function toggleFrameRate() {
 }
 
 function preload() {
-  gloria = loadImage("/showcase/sketches/asciiArt/assets/cat2.jpg");
-  gloria2 = loadImage("/showcase/sketches/asciiArt/assets/cat.jpg");
+  f = loadImage("/showcase/sketches/asciiArt/assets/cat2.jpg");
+  f2 = loadImage("/showcase/sketches/asciiArt/assets/cat.jpg");
   sourceText = loadStrings("/showcase/sketches/asciiArt/assets/image.txt");
   fontRegular = loadFont('/showcase/sketches/asciiArt/assets/FiraCode-Regular.ttf');
 }
 
 function setup() {
   createCanvas(500, 550); 
-  poem = sourceText.join(' ');
+  sText = sourceText.join(' ');
   textFont(fontRegular);
   let toggleButton = createButton('--> Activate ASCII Art <--');
   toggleButton.position(width/5,height + 20);
@@ -35,44 +35,36 @@ function setup() {
   toggleButton.style('font-weight', 'bold');
   toggleButton.style('letter-spacing', '4px');
   toggleButton.style('text-shadow', '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'); 
-  
   toggleButton.mousePressed(toggleFrameRate);
 }
 
 function draw() {
   background(0);
 
-  
-
   if (frameRateEnabled) {
     let charIndex = startIndex;
-    let w = width / gloria.width;
-    let h = height / gloria.height;
-    gloria.loadPixels();
-    for (let j = 0; j < gloria.height; j++) {
-      for (let i = 0; i < gloria.width; i++) {
-        const pixelIndex = (i + j * gloria.width) * 4;
-        const r = gloria.pixels[pixelIndex + 0];
-        const g = gloria.pixels[pixelIndex + 1];
-        const b = gloria.pixels[pixelIndex + 2];
+    let w = width / f.width;
+    let h = height / f.height;
+    f.loadPixels();
+    for (let j = 0; j < f.height; j++) {
+      for (let i = 0; i < f.width; i++) {
+        const pixelIndex = (i + j * f.width) * 4;
+        const r = f.pixels[pixelIndex + 0];
+        const g = f.pixels[pixelIndex + 1];
+        const b = f.pixels[pixelIndex + 2];
         const avg = (r + g + b) / 3;
         
         noStroke();
         fill(avg);
-        const lenp = poem.length; 
+        const lenp = sText.length; 
         textSize(w * 1.4);
         textAlign(CENTER, CENTER);
-        text(poem.charAt(charIndex % lenp), i * w + w * 0.5, j * h + h * 0.5);
+        text(sText.charAt(charIndex % lenp), i * w + w * 0.5, j * h + h * 0.5);
         charIndex++;
       }
     }
     startIndex++;
   } else {
-    image(gloria2, 0, 0, width, height);
-  }
-
-
-
-  
-  
+    image(f2, 0, 0, width, height);
+  }  
 }
