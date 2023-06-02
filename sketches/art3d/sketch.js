@@ -28,13 +28,14 @@ let player = {
   function draw() {
     background(0);
     orbitControl();
-
+  
     let camTheta = mouseX/100;
+    let camThetaY = mouseY/(height/1.2);
     let camDist = 100
     
     camera(camDist * cos(camTheta) + player.pos.x, 
            camDist * sin(camTheta) + player.pos.y, 
-           camDist/1.5 + player.pos.z, 
+           camDist/1.5 * cos(camThetaY) + player.pos.z, 
            player.pos.x,
            player.pos.y, 
            50 + player.pos.z, 
