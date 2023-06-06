@@ -1,4 +1,3 @@
-
     let pg;
     let truchetShader;
     let activeShader;
