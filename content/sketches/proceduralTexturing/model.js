@@ -5,8 +5,8 @@ let rgbshader;
 let angle=0
 
 function preload(){
-  romboshader=readShader('new.frag');
-  rgbshader=readShader('rgb.frag');
+  romboshader=readShader('/showcase/sketches/proceduralTexturing/new.frag');
+  rgbshader=readShader('/showcase/sketches/proceduralTexturing/rgb.frag');
 }
 
 function setup() {
