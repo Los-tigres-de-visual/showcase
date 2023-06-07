@@ -10,7 +10,7 @@ A grandes rasgos se refiere al proceso de generar texturas de forma automática 
 
 A continuación se muestra un ejemplo de figura 3D construída en P5 a partir de las figuras primitivas disponibles. Al jugar con la escala, rotación y posición de las primitivas se puede conseguir figuras nuevas. Adicionalmente podemos manejar diferentes niveles dentro de la consrtucción 3D para aplicar modificaciones a diferentes secciones de la figura, como rotar algunas partes hacia un lado y otras partes hacia otro. Usando las funciones **push()** y  **pull()** podemos cambiar el marco de referencia y trabajar a diferentes niveles para aplicar los cambios a las partes específicas que deseamos:
 
-{{< p5-iframe sketch="/showcase/sketches/proceduralTexturing/model.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="425" height="450" >}}
+{{< p5-iframe sketch="/showcase/sketches/proceduralTexturing/model.js" lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="425" height="425" >}}
 {{< hint warning >}}
 Notese como toda la construcción gira sobre el eje Y, mientras que el anillo mayor lo hace sobre su propio eje Z y la esfera pequeña sobre su propio eje X. Finalmente la estrella central conformada por cubos superpuestos gira en sus tres ejes simultaneamente
 {{< /hint >}}
@@ -35,3 +35,7 @@ Puede rotar la figura arrastrándola con el mouse presionado para ver los difere
 Note cómo cada textura *envuelve* cada figura de diferente manera y de forma individual. Esto se aprecia de mejor manera al mínimo de baldosas en la textura, es decir hubicando el mouse todo a la izquierda del canvas
 {{< /hint >}}
 ## Conclusiones y trabajo futuro:
+Las texturas generadas proceduralmente tienen ventajas importantes en cuanto a su dinamicidad y potencial, lo que las hace útiles en diferentes ámbitos y aplicaciones. Además es posible contruir figuras 3D relativamente complejas de forma modular utilizando figuras más simples, sobre las cuales se puede aplicar diferentes texturas.
+
+En un futuro podría explorarse con nuevas texturas y nuevas figuras más complejas. También sería interesante manipular diferentes características de las texturas, no solo el zoom, sino ángulos, colores etc.
+Por otro lado se podría intentar utilizar diferentes texturas en diferentes partes de una misma figura. Por ejemplo en las figuras contruídas a partir de primitivas, aplicar texturas diferentes a cada primitiva al mismo tiempo. Esto se intentó en este ejercicio pero no se logró a tiempo, pero en un futuro podría ser posible.
