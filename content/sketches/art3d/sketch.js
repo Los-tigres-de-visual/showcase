@@ -166,17 +166,8 @@ let player = {
     //plane(50,200)
     //fill(255)
     //rect(0,0,width, 50, 5)
-    
-    pop()
-    push()
+
     //texture(img);
-    textureMode(NORMAL);
-    beginShape();
-    vertex(-40, -40, 500, 0);
-    vertex(40, -40, 501, 0);
-    vertex(40, 40, 501, 1);
-    vertex(-40, 40, 500, 1);
-    endShape();
     pop()
   }
   
