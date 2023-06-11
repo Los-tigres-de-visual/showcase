@@ -40,7 +40,7 @@ P5 es el lenguaje usado para este trabajo, entonces hablaremos un poco sobre las
 {{< p5-global-iframe id="colorModels" width="710" height="420" >}}
 
 function setup() {
-  createCanvas(710, 400, WEBGL);
+  createCanvas(1500, 400, WEBGL);
 }
 
 function draw() {
