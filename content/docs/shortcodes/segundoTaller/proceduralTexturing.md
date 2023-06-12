@@ -37,10 +37,10 @@ Existen múltiples procesos diferentes bajos los que se pueden crear texturas pr
 
 P5 es el lenguaje usado para este trabajo, entonces hablaremos un poco sobre las geometrías que se pueden tener en él. P5 tiene un entorno 3D en el que se pueden dibujar figuras igualmente tridimensionales. Actualmente existen seis figuras primitivas fáciles de dibujar: cono, esfera, toroide, cubo (caja), cilindro y plano. Al cambiar algunos de los parámetros en las funciones que las crean, también podemos cambiar algunas de sus dimensiones.
 
-{{< p5-global-iframe id="colorModels" width="710" height="450" >}}
+{{< p5-global-iframe id="colorModels" width="710" height="440" >}}
 
 function setup() {
-  createCanvas(1400, 400, WEBGL);
+  createCanvas(1200, 400, WEBGL);
 }
 
 function draw() {
