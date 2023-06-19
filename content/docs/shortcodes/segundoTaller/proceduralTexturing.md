@@ -13,7 +13,7 @@ En computación, una textura es una imagen digital en un espacio (u, v) que se a
 {{< /hint >}}
 
 ### Shader
-Un shader es un programa que permite manupular y controlar el cómo se ven y comportan algunos aspectos visuales en la computación, entre los que podemos encontrar luces, sombras, colores y texturas. Los shaders pueden actuar a diferentes niveles como vértices o pixeles. Es una técnica muy versatil que permite hacer muchas cosas diferentes. Existen múltiples aplicaciones y áreas en las que se aplican los shaders, entre las que se destacan los videojuegos, el post-procesamiento en el cine y en general la creación de imágeness digitales.
+Un shader es un programa que permite manipular y controlar el cómo se ven y comportan algunos aspectos visuales en la computación, entre los que podemos encontrar luces, sombras, colores y texturas. Los shaders pueden actuar a diferentes niveles como vértices o pixeles. Es una técnica muy versatil que permite hacer muchas cosas diferentes. Existen múltiples aplicaciones y áreas en las que se aplican los shaders, entre las que se destacan los videojuegos, el post-procesamiento en el cine y en general la creación de imágeness digitales.
 
 {{< hint info >}}
 [Referencia](https://en.wikipedia.org/wiki/Shader)
@@ -40,12 +40,12 @@ P5 es el lenguaje usado para este trabajo, entonces hablaremos un poco sobre las
 {{< p5-global-iframe id="colorModels" width="710" height="440" >}}
 
 function setup() {
-  createCanvas(1200, 400, WEBGL);
+  createCanvas(1100, 400, WEBGL);
 }
 
 function draw() {
   background(250);
-  translate(-250 * 2.5, 0, 0);
+  translate(-240 * 2.5, 0, 0);
   normalMaterial();
   push();
   rotateZ(frameCount * 0.01);
